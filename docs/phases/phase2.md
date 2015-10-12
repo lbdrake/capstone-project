@@ -1,4 +1,4 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 2: Flux Architecture and Project CRUD (2 days)
 
 ## Rails
 ### Models
@@ -9,25 +9,24 @@
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* ProjectsIndex
+  - ProjectsIndexItem
+* ProjectForm
 
 ### Stores
-* Note
+* Project
 
 ### Actions
-* ApiActions.receiveAllNotes
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
+* ApiActions.receiveAllProjects
+* ApiActions.receiveSingleProject
+* ApiActions.deleteProject
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchAllProjects
+* ApiUtil.fetchSingleProject
+* ApiUtil.createProject
+* ApiUtil.editProject
+* ApiUtil.destroyProject
 
 ## Gems/Libraries
 * Flux Dispatcher
-* Twitter Bootstrap

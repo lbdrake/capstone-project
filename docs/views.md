@@ -6,21 +6,25 @@
 ## New Session
 ![new-session]
 
-## NotesIndex / NoteIndexItem / NoteForm
-![notes]
+## ProjectsIndex
+![all-projects]
 
-## NotebooksIndex / NotebookIndexItem
-![notebooks]
+## ProjectsIndexItem / ToDoListIndexItems / TaskIndexItems
+![single_project_page]
 
-## NoteBookForm
-![notebook-form]
+## DueDatesIndex
+![duedates]
+
+## ProjectForm
+![project-form]
 
 ## Component Heirarchy
 ![component-heirarchy]
 
-[new-user]: ./wireframes/new_user.png
-[new-session]: ./wireframes/new_session.png
-[notes]: ./wireframes/root_notes.png
-[notebooks]: ./wireframes/root_notebooks.png
-[notebook-form]: ./wireframes/notebook_form.png
-[component-heirarchy]: ./wireframes/component_heirarchy.png
+[new-user]: ./wireframes/sign_up.png
+[new-session]: ./wireframes/sign_in.png
+[all-projects]: ./wireframes/all_projects_page.png
+[project-page]: ./wireframes/single_project_page.png
+[duedates]: ./wireframes/me_page.png
+[project-form]: ./wireframes/project_form.png
+[component-heirarchy]: ./wireframes/components.png

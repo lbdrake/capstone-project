@@ -1,39 +1,55 @@
-# Phase 3: Notebooks and Tags (2 days)
+# Phase 3: To Do Lists and Tasks (2 days)
 
 ## Rails
 ### Models
-* Notebook
-* Tag
-* Tagging
+* ToDoList
+* Task
+* TaskAssignment
 
 ### Controllers
-* Api::NotebooksController (create, destroy, index, show, update)
+* Api::ToDoListsController (create, destroy, index, show, update)
+* Api::TasksController (create, destroy, index, show, update)
+* Api::TasksAssignmentsController (create, destroy, index, show, update)
 
 ### Views
-* notebooks/index.json.jbuilder
-* notebooks/show.json.jbuilder
-* tags/show.json.jbuilder
+* todolists/index.json.jbuilder
+* todolists/show.json.jbuilder
+* tasks/index.json.jbuilder
+* tasks/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotebooksIndex
-  - NotebookIndexItem
-* NotebookForm
+* ToDoListIndex
+  - ToDoListIndexItem
+* ToDoListForm
+* TaskIndex
+  - TaskIndexItem
+* TaskForm
 * SearchIndex
 
 ### Stores
-* Notebook
+* ToDoList
+* Task
+* TaskAssignment
 
 ### Actions
-* ApiActions.receiveAllNotebooks
-* ApiActions.receiveSingleNotebook
-* ApiActions.deleteNotebook
+* ApiActions.receiveAllToDoLists
+* ApiActions.receiveSingleToDoList
+* ApiActions.deleteToDoList
+* ApiActions.receiveAllTasks
+* ApiActions.receiveSingleTask
+* ApiActions.deleteTask
 
 ### ApiUtil
-* ApiUtil.fetchAllNotebooks
-* ApiUtil.fetchSingleNotebook
-* ApiUtil.createNotebook
-* ApiUtil.editNotebook
-* ApiUtil.destroyNotebook
+* ApiUtil.fetchAllToDoLists
+* ApiUtil.fetchSingleToDoList
+* ApiUtil.createToDoList
+* ApiUtil.editToDoList
+* ApiUtil.destroyToDoList
+* ApiUtil.fetchAllTasks
+* ApiUtil.fetchSingleTask
+* ApiUtil.createTask
+* ApiUtil.editTask
+* ApiUtil.destroyTask
 
 ## Gems/Libraries
