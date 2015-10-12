@@ -7,7 +7,7 @@
 ## Minimum Viable Product
 
 TaskMaster is a team-based project management web application inspired by Basecamp built using Ruby on Rails
-and React.js. MasterList allows users to work together toward a common goal, with features including:
+and React.js. TaskMaster allows users to work together toward a common goal, with features including:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
