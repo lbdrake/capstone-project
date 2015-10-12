@@ -10,7 +10,7 @@
 ![all-projects]
 
 ## ProjectsIndexItem / ToDoListIndexItems / TaskIndexItems
-![single_project_page]
+![single-project-page]
 
 ## DueDatesIndex
 ![duedates]
@@ -24,7 +24,7 @@
 [new-user]: ./wireframes/sign_up.png
 [new-session]: ./wireframes/sign_in.png
 [all-projects]: ./wireframes/all_projects_page.png
-[project-page]: ./wireframes/single_project_page.png
+[single-project-page]: ./wireframes/single_project_page.png
 [duedates]: ./wireframes/me_page.png
 [project-form]: ./wireframes/project_form.png
 [component-heirarchy]: ./wireframes/components.png
