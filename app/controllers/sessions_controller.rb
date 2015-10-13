@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(session_params[:username], session_params[:password])
     if @user
       signin(@user)
-      redirect_to projects_url
+      redirect_to root_url
     else
       flash[:errors] = ["Incorrect Username/Password combo, please try again"]
       redirect_to new_session_url
