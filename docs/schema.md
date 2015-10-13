@@ -8,7 +8,9 @@ title            | string    | not null
 body             | text      |
 author_id        | integer   | not null, foreign key (references users), indexed
 todolist_id      | integer   | not null, foreign key (references todolist), indexed
-complete         | boolean   | not null, default: false
+completed        | boolean   | not null, default: false
+date             | datetime  |
+
 
 ## todolists
 column name | data type | details
@@ -26,13 +28,6 @@ id          | integer   | not null, primary key
 author_id   | integer   | not null, foreign key (references users), indexed
 title       | string    | not null
 description | string    |
-
-## duedates
-column name | data type | details
-------------|-----------|-----------------------
-id                   | integer   | not null, primary key
-task_id              | string    | not null, foreign key (references tasks), indexed
-date                 | datetime  | not null
 
 ## projectshares
 column name | data type | details
