@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20151013162649) do
     t.string   "username",        null: false
     t.string   "session_token",   null: false
     t.string   "password_digest", null: false
+    t.string   "firstname"
+    t.string   "lastname"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

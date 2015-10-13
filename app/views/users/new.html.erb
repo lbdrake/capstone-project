@@ -1,0 +1,17 @@
+<h1>SIGN UP!</h1>
+<ul>
+  <% if flash.now[:errors] %>
+    <% flash.now[:errors].each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<form action="/users" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="username">New Username</label>
+  <input type="text" name="users[username]" value="<%= @user.username %>" id="username">
+  <label for="password">Password</label>
+  <input type="password" name="users[password]" value="" id="password">
+  <input type="submit" value="Launch My TaskMaster">
+</form>
