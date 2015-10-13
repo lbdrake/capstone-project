@@ -18,5 +18,6 @@
 //= require flux
 //= require eventemitter
 //= require components
+//= require reactrouter.min
 //= require jquery.timeago
 //= require_tree .
