@@ -18,4 +18,5 @@
 //= require flux
 //= require eventemitter
 //= require components
+//= require jquery.timeago
 //= require_tree .

@@ -6,10 +6,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <% if signed_in? %>
-  <script>
-    window.CURRENT_USER = <%= current_user.id %>
-  </script>
+    <script>
+      window.CURRENT_USER = <%= current_user.id %>
+    </script>
   <% end %>
+  <script type="text/javascript">
+   jQuery(document).ready(function() {
+     $("abbr.timeago").timeago();
+   });
+</script>
 </head>
 <body>
 <%= button_to "Logout", session_url, method: :delete %>
