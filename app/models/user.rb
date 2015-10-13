@@ -6,8 +6,6 @@
 #  username        :string           not null
 #  session_token   :string           not null
 #  password_digest :string           not null
-#  firstname       :string
-#  lastname        :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -19,6 +17,13 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   attr_reader :password
+
+  has_many(
+    :projects,
+    class_name: :Project,
+    primary_key: :id,
+    foreign_key: :author_id
+  )
 
   def self.find_by_credentials(username, password)
     user = self.find_by_username(username)
