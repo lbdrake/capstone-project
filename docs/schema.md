@@ -7,9 +7,10 @@ id               | integer   | not null, primary key
 title            | string    | not null
 body             | text      |
 author_id        | integer   | not null, foreign key (references users), indexed
+assigned_user_id   | integer | foreign key (references users), indexed
 todolist_id      | integer   | not null, foreign key (references todolist), indexed
 completed        | boolean   | not null, default: false
-date             | datetime  |
+duedate          | datetime  |
 
 
 ## todolists
@@ -34,13 +35,6 @@ column name | data type | details
 id                   | integer   | not null, primary key
 project_id           | string    | not null, foreign key (references tasks), indexed
 user_id              | integer   | not null, foreign key (references users), indexed
-
-## taskassignments
-column name | data type | details
-------------|-----------|-----------------------
-id                 | integer   | not null, primary key
-task_id            | string    | not null, foreign key (references tasks), indexed
-assigned_user_id   | integer   | not null, foreign key (references users), indexed
 
 ## users
 column name     | data type | details

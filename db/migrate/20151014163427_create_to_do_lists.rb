@@ -6,5 +6,6 @@ class CreateToDoLists < ActiveRecord::Migration
       t.boolean :archived, null: false, default: false
       t.timestamps null: false
     end
+    add_index :to_do_lists, :project_id
   end
 end

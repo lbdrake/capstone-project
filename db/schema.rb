@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20151014163427) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "to_do_lists", ["project_id"], name: "index_to_do_lists_on_project_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
     t.string   "session_token",   null: false
