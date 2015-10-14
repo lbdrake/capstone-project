@@ -32,4 +32,17 @@ class Project < ActiveRecord::Base
     through: :todolists,
     source: :tasks
   )
+
+  has_many(
+    :project_shares,
+    class_name: :ProjectShare,
+    primary_key: :id,
+    foreign_key: :project_id
+  )
+
+  has_many(
+    :shared_users,
+    through: :project_shares,
+    source: :shared_user
+  )
 end

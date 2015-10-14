@@ -25,6 +25,20 @@ class User < ActiveRecord::Base
     foreign_key: :author_id
   )
 
+  has_many(
+    :shared_projects,
+    class_name: :SharedProject,
+    primary_key: :id,
+    foreign_key: :shared_user_id
+  )
+
+  has_many(
+    :assigned_tasks,
+    class_name: :Task,
+    primary_key: :id,
+    foreign_key: :assigned_user_id
+  )
+
   def self.find_by_credentials(username, password)
     user = self.find_by_username(username)
     return user if user && user.is_password?(password)

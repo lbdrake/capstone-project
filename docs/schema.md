@@ -34,7 +34,7 @@ column name | data type | details
 ------------|-----------|-----------------------
 id                   | integer   | not null, primary key
 project_id           | string    | not null, foreign key (references tasks), indexed
-user_id              | integer   | not null, foreign key (references users), indexed
+shared_user_id       | integer   | not null, foreign key (references users), indexed
 
 ## users
 column name     | data type | details
