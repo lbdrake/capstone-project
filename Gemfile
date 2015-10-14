@@ -33,6 +33,7 @@ gem 'annotate'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'bootstrap-sass'
 
 group :development do
   gem 'pry-rails'

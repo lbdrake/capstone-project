@@ -31,12 +31,18 @@ window.ProjectShow = React.createClass({
     this.setState({ project: project });
   },
 
+  handleEditProjectClick: function (e) {
+    console.log("Project Edit button clicked - will load Edit form");
+
+  },
+
   render: function () {
     return (
       <div>
         <p>We are in ProjectShow</p>
         <h1>{this.state.project.title}</h1>
         <h2>{this.state.project.description}</h2>
+        <p onClick={this.handleEditProjectClick}>Edit Project</p>
       </div>
     );
   }

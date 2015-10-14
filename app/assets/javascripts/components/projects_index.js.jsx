@@ -24,6 +24,10 @@ window.ProjectsIndex = React.createClass({
     this.props.history.pushState(null, link);
   },
 
+  goToNewProjectForm: function (e) {
+    this.props.history.pushState(null, "projects/new");
+  },
+
   render: function () {
     return (
       <div className="projectindex">
@@ -33,13 +37,17 @@ window.ProjectsIndex = React.createClass({
               <div id={project.id} onClick={this.goToProjectPage}>
               <li className="projectitem" key={project.id}>{project.title}</li>
                 <ul>
-                  <li className="projectitemdescription" key={"description" + project.id}>{project.description}</li>
-                  <li className="projectitemupdated" key={"updated" + project.id}>Last updated {jQuery.timeago(new Date(project.updated_at))}</li>
+                  <li className="projectitemdescription"
+                      key={"description" + project.id}>{project.description}</li>
+                  <li className="projectitemupdated" key={"updated" + project.id}>
+                      Last updated {jQuery.timeago(new Date(project.updated_at))}
+                  </li>
                 </ul>
               </div>
           ];
         }.bind(this))}
         </ul>
+        <p onClick={this.goToNewProjectForm}>Add New Project</p>
       </div>
     );
   }

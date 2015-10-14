@@ -7,5 +7,16 @@ ApiUtil = {
         ApiActions.receiveAll(response);
       }
     });
+  },
+
+  createProject: function(projectinfo) {
+    $.ajax({
+      url: "api/projects",
+      type: "post",
+      data: {project: projectinfo},
+      success: function (response) {
+          ApiActions.receiveNewProject(response);
+      }
+    });
   }
 };

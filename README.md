@@ -54,7 +54,7 @@ Projects can be created, read, edited and destroyed in the browser.
 Phase 3 adds organization to the Project. Projects have many To Do Lists,
 which have their own `Index` views. To Do Lists have many Tasks, which
 also have their own `Index` views. Create JSON API for To Do Lists. Project
-authors can share projects with other Userse. Tasks can also now be assigned
+authors can share projects with other Users. Tasks can also now be assigned
 to Users. Users can bring up Tasks in a separate `SearchIndex` view by searching
 for blocks of text.
 

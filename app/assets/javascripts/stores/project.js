@@ -8,8 +8,16 @@
       return _projects.slice();
     },
 
+    last: function () {
+      return _projects.slice(-1);
+    },
+
     resetProjects: function (projects) {
       _projects = projects;
+    },
+
+    addNewProject: function (project) {
+      _projects.push(project);
     },
 
     addChangeListener: function (callback) {
@@ -21,9 +29,15 @@
     },
 
     dispatcherID: AppDispatcher.register(function(payload){
-      if(payload.actionType === ProjectConstants.PROJECTS_RECEIVED) {
-        ProjectStore.resetProjects(payload.projects);
-        ProjectStore.emit(PROJECT_CHANGE_EVENT);
+      switch(payload.actionType){
+        case ProjectConstants.PROJECTS_RECEIVED:
+          ProjectStore.resetProjects(payload.projects);
+          ProjectStore.emit(PROJECT_CHANGE_EVENT);
+          break;
+        case ProjectConstants.NEW_PROJECT_RECEIVED:
+          ProjectStore.addNewProject(payload.project);
+          ProjectStore.emit(PROJECT_CHANGE_EVENT);
+          break;
       }
     })
   });
