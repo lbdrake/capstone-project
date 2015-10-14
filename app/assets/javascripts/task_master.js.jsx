@@ -17,7 +17,7 @@ var App = React.createClass({
 var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={ProjectsIndex} />
-    <Route path="projects/:projectId" component={ProjectIndexItem} />
+    <Route path="projects/:projectId" component={ProjectShow} />
   </Route>
 );
 

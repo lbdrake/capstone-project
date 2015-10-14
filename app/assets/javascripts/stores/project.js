@@ -16,7 +16,7 @@
       this.on(PROJECT_CHANGE_EVENT, callback);
     },
 
-    removeChangeListener: function () {
+    removeChangeListener: function (callback) {
       this.removeListener(PROJECT_CHANGE_EVENT, callback);
     },
 
