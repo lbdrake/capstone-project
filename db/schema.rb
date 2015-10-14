@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014163427) do
+ActiveRecord::Schema.define(version: 20151014165757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,22 @@ ActiveRecord::Schema.define(version: 20151014163427) do
   end
 
   add_index "projects", ["author_id"], name: "index_projects_on_author_id", using: :btree
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "title",                            null: false
+    t.text     "description"
+    t.integer  "author_id",                        null: false
+    t.integer  "assigned_user_id"
+    t.integer  "todolist_id",                      null: false
+    t.boolean  "completed",        default: false, null: false
+    t.datetime "duedate"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "tasks", ["assigned_user_id"], name: "index_tasks_on_assigned_user_id", using: :btree
+  add_index "tasks", ["author_id"], name: "index_tasks_on_author_id", using: :btree
+  add_index "tasks", ["todolist_id"], name: "index_tasks_on_todolist_id", using: :btree
 
   create_table "to_do_lists", force: :cascade do |t|
     t.string   "title",                      null: false

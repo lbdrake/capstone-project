@@ -26,4 +26,10 @@ class Project < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :project_id
   )
+
+  has_many(
+    :tasks,
+    through: :todolists,
+    source: :tasks
+  )
 end

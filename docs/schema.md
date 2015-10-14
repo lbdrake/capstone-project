@@ -5,9 +5,9 @@ column name | data type | details
 ------------|-----------|-----------------------
 id               | integer   | not null, primary key
 title            | string    | not null
-body             | text      |
+description      | text      |
 author_id        | integer   | not null, foreign key (references users), indexed
-assigned_user_id   | integer | foreign key (references users), indexed
+assigned_user_id | integer   | foreign key (references users), indexed
 todolist_id      | integer   | not null, foreign key (references todolist), indexed
 completed        | boolean   | not null, default: false
 duedate          | datetime  |
