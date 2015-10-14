@@ -26,10 +26,16 @@ class User < ActiveRecord::Base
   )
 
   has_many(
-    :shared_projects,
-    class_name: :SharedProject,
+    :project_shares,
+    class_name: :ProjectShare,
     primary_key: :id,
     foreign_key: :shared_user_id
+  )
+
+  has_many(
+    :shared_projects,
+    through: :project_shares,
+    source: :project
   )
 
   has_many(

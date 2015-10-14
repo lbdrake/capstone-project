@@ -20,7 +20,7 @@ class Task < ActiveRecord::Base
 
   belongs_to(
     :todolist,
-    class_name: ToDoList,
+    class_name: :ToDoList,
     primary_key: :id,
     foreign_key: :todolist_id
   )
