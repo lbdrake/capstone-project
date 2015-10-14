@@ -19,4 +19,11 @@ class Project < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :author_id
   )
+
+  has_many(
+    :todolists,
+    class_name: :ToDoList,
+    primary_key: :id,
+    foreign_key: :project_id
+  )
 end

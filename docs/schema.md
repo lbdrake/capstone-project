@@ -17,7 +17,6 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 title       | string    | not null
-author_id   | integer   | not null, foreign key (references users), indexed
 project_id  | integer   | not null, foreign key (references projects), indexed
 archived    | boolean   | not null, default: false
 
