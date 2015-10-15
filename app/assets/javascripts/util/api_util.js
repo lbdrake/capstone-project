@@ -18,5 +18,28 @@ ApiUtil = {
           ApiActions.receiveNewProject(response);
       }
     });
+  },
+
+  deleteProject: function(project) {
+    var projectUrl = "api/projects/" + project.id;
+    $.ajax({
+      url: projectUrl,
+      type: "delete",
+      success: function (response) {
+        ApiActions.deleteProject(response);
+      }
+    });
+  },
+
+  editProject: function(project) {
+    var projectUrl = "api/projects/" + project.id;
+    $.ajax({
+      url: projectUrl,
+      type: "patch",
+      data: {project: project},
+      success: function (response) {
+        ApiActions.editProject(response);
+      }
+    });
   }
 };

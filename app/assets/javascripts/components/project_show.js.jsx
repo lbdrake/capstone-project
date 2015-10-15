@@ -32,17 +32,23 @@ window.ProjectShow = React.createClass({
   },
 
   handleEditProjectClick: function (e) {
-    console.log("Project Edit button clicked - will load Edit form");
+    e.preventDefault();
+    var projectUrl = "/projects/" + this.state.project.id + "/edit";
+    this.props.history.pushState(null, projectUrl, this.state.project);
+  },
 
+  handleDeleteProjectClick: function (e) {
+    window.confirm("Are you sure you want to delete this project? This action is permanent and cannot be undone");
+    ApiUtil.deleteProject(this.state.project);
+    this.props.history.pushState(null, "/");
   },
 
   render: function () {
     return (
       <div>
-        <p>We are in ProjectShow</p>
-        <h1>{this.state.project.title}</h1>
-        <h2>{this.state.project.description}</h2>
-        <p onClick={this.handleEditProjectClick}>Edit Project</p>
+        <h1>Title: {this.state.project.title} <button onClick={this.handleEditProjectClick}>edit</button></h1>
+        <h2>Descr: {this.state.project.description}</h2>
+        <p onClick={this.handleDeleteProjectClick}><u>Delete this project</u></p>
       </div>
     );
   }

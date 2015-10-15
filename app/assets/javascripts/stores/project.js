@@ -28,6 +28,31 @@
       this.removeListener(PROJECT_CHANGE_EVENT, callback);
     },
 
+    find: function (id) {
+      var index = "";
+      _projects.forEach(function (project, idx) {
+        if (project.id === id) {
+          index = idx;
+        }
+        return index;
+      });
+    },
+
+    deleteProject: function (project) {
+      var index = this.find(project.id);
+      if (index) {
+        _projects.splice(index, 1);
+      }
+    },
+
+    editProject: function (project) {
+      var index = this.find(project.id);
+      if (index) {
+        _projects.splice(index, 1);
+        _projects.push(project);
+      }
+    },
+
     dispatcherID: AppDispatcher.register(function(payload){
       switch(payload.actionType){
         case ProjectConstants.PROJECTS_RECEIVED:
@@ -36,6 +61,14 @@
           break;
         case ProjectConstants.NEW_PROJECT_RECEIVED:
           ProjectStore.addNewProject(payload.project);
+          ProjectStore.emit(PROJECT_CHANGE_EVENT);
+          break;
+        case ProjectConstants.DELETED_PROJECT:
+          ProjectStore.deleteProject(payload.project);
+          ProjectStore.emit(PROJECT_CHANGE_EVENT);
+          break;
+        case ProjectConstants.EDITED_PROJECT:
+          ProjectStore.editProject(payload.project);
           ProjectStore.emit(PROJECT_CHANGE_EVENT);
           break;
       }

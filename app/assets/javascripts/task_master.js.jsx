@@ -20,6 +20,7 @@ var routes = (
     <IndexRoute component={ProjectsIndex} />
     <Route path="projects/new" component={ProjectForm} />
     <Route path="projects/:projectId" component={ProjectShow} />
+    <Route path="projects/:projectId/edit" component={ProjectEditForm} />
   </Route>
 );
 

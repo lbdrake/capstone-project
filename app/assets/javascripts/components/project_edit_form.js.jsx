@@ -1,10 +1,22 @@
-window.ProjectForm = React.createClass({
+window.ProjectEditForm = React.createClass({
   getInitialState: function () {
+    var projectId = this.props.params.projectId;
+    var project = this._findProjectById(projectId) || {};
     return ({
-      title: "",
-      description: "",
+      id: projectId,
+      title: project.title,
+      description: project.description,
       shared_users: []
-    });
+    });  },
+
+  _findProjectById: function () {
+    var foundProject;
+    ProjectStore.all().forEach(function(project) {
+      if (project.id === parseInt(this.props.params.projectId)) {
+        foundProject = project;
+      }
+    }.bind(this));
+    return foundProject;
   },
 
   componentDidMount: function (){
@@ -17,7 +29,8 @@ window.ProjectForm = React.createClass({
 
   handleFormSubmit: function (e) {
     e.preventDefault();
-    ApiUtil.createProject({
+    ApiUtil.editProject({
+      id: this.state.id,
       title: this.state.title,
       description: this.state.description
     });
@@ -48,7 +61,7 @@ window.ProjectForm = React.createClass({
   render: function () {
     return (
       <div>
-        <h1>Create TaskMaster Project:</h1>
+        <h1>Update TaskMaster Project:</h1>
         <form onSubmit={this.handleFormSubmit}>
           <input type="text"
                  name="project[title]"
