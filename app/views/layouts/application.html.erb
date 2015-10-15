@@ -8,7 +8,8 @@
 
   <% if signed_in? %>
     <script>
-      window.CURRENT_USER = <%= current_user.id %>
+      window.CURRENT_USER = <%= current_user.id %>;
+      window.CURRENT_USERNAME = "<%= current_user.username %>";
     </script>
   <% end %>
 
@@ -21,7 +22,10 @@
 </head>
 <body>
 <%= button_to "Logout", session_url, method: :delete %>
+
+<div class="container">
 <%= yield %>
+</div>
 
 </body>
 </html>

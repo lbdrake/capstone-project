@@ -19,4 +19,5 @@
 //= require components
 //= require reactrouter.min
 //= require jquery.timeago
+//= require bootstrap
 //= require_tree .
