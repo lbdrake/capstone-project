@@ -47,13 +47,18 @@ class Project < ActiveRecord::Base
   )
 
   def self.projects_for_user_id(user_id)
-    owned_projects = self.where("author_id = ?", user_id) || []
+    # owned_projects = self.where("author_id = ?", user_id)
+    # shared_projects = User.find(user_id).shared_projects
+    # projects = owned_projects.merge(shared_projects)
+    joins_cond = <<-SQL
+       LEFT OUTER JOIN
+         project_shares ON projects.id = project_shares.project_id
+       SQL
 
-    shared_projects = []
-    project_shares = ProjectShare.where("shared_user_id = ?", user_id) || []
-    project_shares.each do |project_share|
-      shared_projects << Project.find(project_share.project_id)
-    end
-    shared_projects.concat(owned_projects)
+     where_cond = <<-SQL
+       ((projects.author_id = :user_id) OR (project_shares.shared_user_id = :user_id))
+     SQL
+
+     Project.joins(joins_cond).where(where_cond, user_id: user_id).uniq
   end
 end
