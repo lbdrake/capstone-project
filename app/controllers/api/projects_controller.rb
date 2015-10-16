@@ -16,7 +16,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find_by_id(params[:id])
+    @project = Project.projects_for_user_id(current_user.id).includes({todolists: :tasks}).find(params[:id])
     render :show
   end
 
