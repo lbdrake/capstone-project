@@ -1,4 +1,9 @@
 window.NavBar = React.createClass({
+  logoutUser: function (e) {
+    e.preventDefault();
+    ApiUtil.logoutUser();
+  },
+
   render: function (){
     return (
       <nav className="nav navbar-default nav-group">
@@ -29,7 +34,7 @@ window.NavBar = React.createClass({
             <ul className="nav nav-stacked navbar-right">
                 <ul className="nav navbar-nav navbar-links navbar-double-links">
                   <li className="navbar-text nav-username">{"Signed in as " + window.CURRENT_USERNAME}</li>
-                  <li><a href="#" className="nav-logout">Logout</a></li>
+                  <li><a href="#logout" className="nav-logout" onClick={this.logoutUser}>Logout</a></li>
                 </ul>
               <form className="navbar-form" role="search">
                   <div className="form-group">

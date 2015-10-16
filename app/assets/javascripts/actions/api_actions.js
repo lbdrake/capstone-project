@@ -25,5 +25,11 @@ ApiActions = {
       actionType: ProjectConstants.EDITED_PROJECT,
       project: project
     });
+  },
+
+  logoutUser: function(){
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.LOGOUT_USER
+    });
   }
 };

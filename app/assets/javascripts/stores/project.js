@@ -53,6 +53,10 @@
       }
     },
 
+    emptyStore: function () {
+      _projects = [];
+    },
+
     dispatcherID: AppDispatcher.register(function(payload){
       switch(payload.actionType){
         case ProjectConstants.PROJECTS_RECEIVED:
@@ -69,6 +73,10 @@
           break;
         case ProjectConstants.EDITED_PROJECT:
           ProjectStore.editProject(payload.project);
+          ProjectStore.emit(PROJECT_CHANGE_EVENT);
+          break;
+        case ProjectConstants.LOGOUT_USER:
+          ProjectStore.emptyStore();
           ProjectStore.emit(PROJECT_CHANGE_EVENT);
           break;
       }
