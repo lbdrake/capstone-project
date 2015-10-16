@@ -1,6 +1,5 @@
 window.NavBar = React.createClass({
   render: function (){
-    // debugger;
     return (
       <nav className="nav navbar-default nav-group">
         <div className="container-fluid">
@@ -21,22 +20,22 @@ window.NavBar = React.createClass({
           </div>
 
           <div className="collapse navbar-collapse" id="navbar-collapse-1">
-            <ul className="nav navbar-nav nav-center">
+            <ul className="nav navbar-nav nav-center nav-bling-container">
               <li className="nav-bling"><a href="#">Projects<span className="sr-only">(current)</span></a></li>
               <li className="nav-bling"><a href="#">Calendar</a></li>
               <li className="nav-bling"><a href="#">Me</a></li>
             </ul>
 
             <ul className="nav nav-stacked navbar-right">
-                <ul className="nav navbar-nav navbar-links">
-                  <li className="navbar-text">{"Signed in as " + window.CURRENT_USERNAME}</li>
-                  <li className="nav-bling"><a href="#">Logout</a></li>
+                <ul className="nav navbar-nav navbar-links navbar-double-links">
+                  <li className="navbar-text nav-username">{"Signed in as " + window.CURRENT_USERNAME}</li>
+                  <li><a href="#" className="nav-logout">Logout</a></li>
                 </ul>
               <form className="navbar-form" role="search">
                   <div className="form-group">
-                    <input type="text" className="form-control" placeholder="Search" />
+                    <input type="text" className="form-control" placeholder="Search projects for..." />
                   </div>
-                  <button type="submit" className="btn btn-default">Submit</button>
+                  <button type="submit" className="btn btn-default">Go!</button>
               </form>
             </ul>
           </div>

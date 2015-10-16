@@ -31,23 +31,28 @@ window.ProjectsIndex = React.createClass({
   render: function () {
     return (
       <div className="projectindex">
+        <button type="button"
+                className="sm-add-new-project-button btn btn-default"
+                onClick={this.goToNewProjectForm}>
+          <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <br/>Add New <br/>Project
+          </button>
+        <div className="row smallerrow">
         <ul>
           {this.state.projects.map(function(project) {
             return [
-              <div id={project.id} onClick={this.goToProjectPage}>
+              <div className="col-md-4 project-pane" id={project.id} onClick={this.goToProjectPage}>
               <li className="projectitem" key={project.id}>{project.title}</li>
-                <ul>
                   <li className="projectitemdescription"
                       key={"description" + project.id}>{project.description}</li>
                   <li className="projectitemupdated" key={"updated" + project.id}>
                       Last updated {jQuery.timeago(new Date(project.updated_at))}
                   </li>
-                </ul>
               </div>
           ];
         }.bind(this))}
         </ul>
-        <p onClick={this.goToNewProjectForm}>Add New Project</p>
+      </div>
       </div>
     );
   }

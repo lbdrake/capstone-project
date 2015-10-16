@@ -1,3 +1,70 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project-index {
+  position: relative;
+  width: 90%;
+}
+.project-pane {
+  border: 1px solid lightgrey;
+  box-shadow: 0 0 6px lightgrey;
+  border-radius: 5px;
+  height: 260px;
+  width: 30%;
+  margin: 10px;
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  // padding-left: 0px;
+  // padding-right: 0px;
+  overflow: hidden;
+}
+
+.smallerrow {
+  width: 85%;
+  margin: auto;
+  padding-top: 50px;
+}
+
+.projectitem {
+  font-weight: bold;
+  font-size: 1.3em;
+  line-height: 1.2;
+}
+
+.projectitemdescription {
+}
+
+.projectitemupdated {
+  font-size: .9em;
+  font-style: italic;
+  padding-top: 10px;
+}
+
+.project-pane:hover {
+  background-color: lightyellow;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.sm-add-new-project-button {
+  float: left;
+  position: relative;
+  top: 62px;
+  transform: translateX(30px);
+  background-color: #9dc82a;
+}
+
+.sm-add-new-project-button:hover {
+  background-color: lightblue;
+  transition: 0.3s;
+  box-shadow: 0 0 6px lightgrey;
+}
+
+.sm-add-new-project-button:select {
+  transform: translate(30px, 3px);
+  box-shadow: 0 0 6px lightgrey;
+
+}

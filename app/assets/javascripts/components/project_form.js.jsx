@@ -50,32 +50,43 @@ window.ProjectForm = React.createClass({
       <div>
         <h1>Create TaskMaster Project:</h1>
         <form onSubmit={this.handleFormSubmit}>
+          <div className="form-group">
+            <label htmlFor="title" className="sr-only">Add Project Title</label>
+            <input type="text"
+                   className="form-control"
+                   name="project[title]"
+                   id="title"
+                   placeholder="Name the project"
+                   onChange={this.updateTitle}
+                   value={this.state.title} />
+         </div>
+         <div className="form-group">
+           <label htmlFor="description" className="sr-only">Add Project Description</label>
           <input type="text"
-                 name="project[title]"
-                 placeholder="Name the project"
-                 onChange={this.updateTitle}
-                 value={this.state.title} />
-          <input type="text"
+                 className="form-control"
                  name="project[description]"
+                 id="description"
                  placeholder="Add a project description with more info for the team (optional)"
                  onChange={this.updateDescription}
                  value={this.state.description} />
                <br/>
-          <label>Invite Team Members:</label>
-          <ul>
-          {
-            this.state.shared_users.map(function (shared_user) {
-              return(
-                <li>{shared_user.username}<input type="button" onClick={this.handleRemoveUserClick} value="Remove from project" /></li>
-              );
-            })
-          }
-          </ul>
-          <input type="text" name="project[shared_user]" placeholder="Please add a username" />
-          <input type="submit" value="Save Project" />
+         </div>
+         <div className="form-group">
+            <label>Invite Team Members:</label>
+            <ul>
+            {
+              this.state.shared_users.map(function (shared_user) {
+                return(
+                  <li>{shared_user.username}<input type="button" onClick={this.handleRemoveUserClick} value="Remove from project" /></li>
+                );
+              })
+            }
+            </ul>
+            <input type="text" name="project[shared_user]" placeholder="Please add a username" />
+          </div>
+          <input type="submit" value="Save Project" /><span onClick={this.handleCancelClick}> or <u>Cancel</u></span>
 
         </form>
-        <p onClick={this.handleCancelClick}>or Cancel</p>
       </div>
     );
   }
