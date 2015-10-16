@@ -1,6 +1,6 @@
 class Api::ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    @projects = Project.projects_for_user_id(current_user.id)
     render :index
   end
 

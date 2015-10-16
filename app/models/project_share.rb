@@ -1,5 +1,6 @@
 class ProjectShare < ActiveRecord::Base
   validates :shared_user_id, :project_id, presence: true
+  validates_uniqueness_of :shared_user_id, :scope => [:project_id]
 
   belongs_to(
     :shared_user,

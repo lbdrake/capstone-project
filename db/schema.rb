@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014170853) do
+ActiveRecord::Schema.define(version: 20151016184055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,12 @@ ActiveRecord::Schema.define(version: 20151014170853) do
     t.datetime "updated_at",     null: false
   end
 
+  add_index "project_shares", ["project_id", "shared_user_id"], name: "index_project_shares_on_project_id_and_shared_user_id", unique: true, using: :btree
   add_index "project_shares", ["project_id"], name: "index_project_shares_on_project_id", using: :btree
   add_index "project_shares", ["shared_user_id"], name: "index_project_shares_on_shared_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
-    t.string   "author_id",   null: false
+    t.integer  "author_id",   null: false
     t.string   "title",       null: false
     t.text     "description"
     t.datetime "created_at",  null: false

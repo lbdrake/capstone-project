@@ -45,4 +45,15 @@ class Project < ActiveRecord::Base
     through: :project_shares,
     source: :shared_user
   )
+
+  def self.projects_for_user_id(user_id)
+    owned_projects = self.where("author_id = ?", user_id) || []
+
+    shared_projects = []
+    project_shares = ProjectShare.where("shared_user_id = ?", user_id) || []
+    project_shares.each do |project_share|
+      shared_projects << Project.find(project_share.project_id)
+    end
+    shared_projects.concat(owned_projects)
+  end
 end
