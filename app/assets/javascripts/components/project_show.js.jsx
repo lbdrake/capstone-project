@@ -48,11 +48,11 @@ window.ProjectShow = React.createClass({
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h1>Title: {this.state.project.title} <button onClick={this.handleEditProjectClick} className="btn btn-default btn-xs">edit</button></h1>
-          <h2>Descr: {this.state.project.description}</h2>
+          <h1>{this.state.project.title} <button onClick={this.handleEditProjectClick} className="btn btn-default btn-xs">edit</button></h1>
+          <h2>{this.state.project.description}</h2>
         </div>
         <div className="panel-body">
-          panel content
+          <ToDoLists project={this.state.project} todolists={this.state.project.todolists || []} />
         </div>
         <div className="panel-footer">
           <p onClick={this.handleDeleteProjectClick}><u>Delete this project</u></p>
