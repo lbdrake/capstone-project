@@ -3,7 +3,8 @@ window.ProjectForm = React.createClass({
     return ({
       title: "",
       description: "",
-      shared_users: []
+      new_shared_user: "",
+      shared_users: [{username: "Eleanora"}]
     });
   },
 
@@ -41,8 +42,19 @@ window.ProjectForm = React.createClass({
     this.setState({description: e.target.value});
   },
 
+  updateNewSharedUser : function (e){
+    this.setState({new_shared_user: e.target.value});
+  },
+
   handleRemoveUserClick: function (e) {
+    debugger;
     console.log("Remove user button clicked - will remove 'ProjectShare', and flash alert success");
+  },
+
+  handleAddUserClick: function (e) {
+    this.state.shared_users.push(this.state.new_shared_user);
+    this.setState({new_shared_user: ""});
+    console.log("Add user button clicked - will add 'ProjectShare', and flash alert success");
   },
 
   render: function () {
@@ -77,14 +89,19 @@ window.ProjectForm = React.createClass({
             {
               this.state.shared_users.map(function (shared_user) {
                 return(
-                  <li>{shared_user.username}<input type="button" onClick={this.handleRemoveUserClick} value="Remove from project" /></li>
+                  <li>{shared_user.username}  <input type="button"
+                                             onClick={this.handleRemoveUserClick}
+                                             value="Remove" /></li>
                 );
               })
             }
             </ul>
-            <input type="text" name="project[shared_user]" placeholder="Please add a username" />
+            <input type="text" name="project[shared_user]"
+                               onChange={this.updateNewSharedUser}
+                               placeholder="Please add a username" />
+            <input type="button" onClick={this.handleAddUserClick} value="Add" />
           </div>
-          <input type="submit" value="Save Project" /><span onClick={this.handleCancelClick}> or <u>Cancel</u></span>
+          <input type="submit" value="Save Project"/><span onClick={this.handleCancelClick}> or <u>Cancel</u></span>
 
         </form>
       </div>
