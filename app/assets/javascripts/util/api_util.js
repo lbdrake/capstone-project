@@ -55,5 +55,15 @@ ApiUtil = {
         window.location.reload(true);
       }
     });
+  },
+
+  fetchUsers: function () {
+    $.ajax({
+      url: "/users",
+      type: "get",
+      success: function (response){
+        ApiActions.receiveAllUsers(response);
+      }
+    });
   }
 };

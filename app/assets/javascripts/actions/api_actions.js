@@ -31,5 +31,12 @@ ApiActions = {
     AppDispatcher.dispatch({
       actionType: ProjectConstants.LOGOUT_USER
     });
+  },
+
+  receiveAllUsers: function(users){
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.USERS_RECEIVED,
+      users: users
+    });
   }
 };

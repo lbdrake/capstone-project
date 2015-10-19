@@ -14,6 +14,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @all_usernames = User.findAllUsernames
+    render json: @all_usernames
+  end
+
   private
   def user_params
     params.require(:users).permit(:username, :password)

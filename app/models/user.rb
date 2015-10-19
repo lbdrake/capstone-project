@@ -45,6 +45,15 @@ class User < ActiveRecord::Base
     foreign_key: :assigned_user_id
   )
 
+  def self.findAllUsernames
+    users = self.all
+    usernames = []
+    users.each do |user|
+      usernames << user.username
+    end
+    return usernames
+  end
+
   def self.find_by_credentials(username, password)
     user = self.find_by_username(username)
     return user if user && user.is_password?(password)

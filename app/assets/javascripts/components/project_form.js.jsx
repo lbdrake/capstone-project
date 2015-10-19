@@ -1,5 +1,6 @@
 window.ProjectForm = React.createClass({
   getInitialState: function () {
+    var noUsersFound = "defaultMessageUsersFound";
     return ({
       title: "",
       description: "",
@@ -10,6 +11,7 @@ window.ProjectForm = React.createClass({
 
   componentDidMount: function (){
     ProjectStore.addChangeListener(this.goToProjectPage);
+    ApiUtil.fetchUsers();
   },
 
   componentWillUnmount: function (){
@@ -47,14 +49,34 @@ window.ProjectForm = React.createClass({
   },
 
   handleRemoveUserClick: function (e) {
-    debugger;
     console.log("Remove user button clicked - will remove 'ProjectShare', and flash alert success");
   },
 
   handleAddUserClick: function (e) {
-    this.state.shared_users.push(this.state.new_shared_user);
-    this.setState({new_shared_user: ""});
-    console.log("Add user button clicked - will add 'ProjectShare', and flash alert success");
+    noUsersFound = "defaultMessageUsersFound";
+    // if this.state.new_shared_user belongs to an account
+    //    need query for users, need users store
+    //    we will fetchAll users
+    //    check if _allUsers.include?(this.state.new_shared_user)
+    // ApiAction, add shared user
+    // json api needs to return shared users
+    // this will update our store
+    //this will update our list
+    // if user does not have an account, button to send them an email
+    // pre-fill out submit, email, link to Sign Up page of site
+      debugger;
+      if (UserStore.find(this.state.username)) {
+          this.setstate({shared_users: shared_users.push(this.state.new_shared_user) });
+          this.setState({new_shared_user: ""});
+        } else {
+          this.replyNoUsersFound();
+          this.setState({new_shared_user: ""});
+        }
+  },
+
+  replyNoUsersFound: function (){
+    noUsersFound = "noUsersFound";
+    return noUsersFound;
   },
 
   render: function () {
@@ -84,22 +106,28 @@ window.ProjectForm = React.createClass({
                <br/>
          </div>
          <div className="form-group">
-            <label>Invite Team Members:</label>
             <ul>
+              <li className="invite-users-header">These team members are already shared:</li>
             {
               this.state.shared_users.map(function (shared_user) {
                 return(
-                  <li>{shared_user.username}  <input type="button"
-                                             onClick={this.handleRemoveUserClick}
-                                             value="Remove" /></li>
+                  <li key={shared_user.username}
+                      className="already-shared">
+                    {shared_user.username}
+                    <span onClick={this.handleRemoveUserClick}
+                          className="remove-shared-user glyphicon glyphicon-remove-circle">
+                    </span>
+                  </li>
                 );
               })
             }
+            <li className="invite-users-header">Invite more people:</li>
             </ul>
             <input type="text" name="project[shared_user]"
                                onChange={this.updateNewSharedUser}
                                placeholder="Please add a username" />
             <input type="button" onClick={this.handleAddUserClick} value="Add" />
+            <p className={this.noUsersFound}>Sorry, we couldn't find a user with that username, please try again</p>
           </div>
           <input type="submit" value="Save Project"/><span onClick={this.handleCancelClick}> or <u>Cancel</u></span>
 
