@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     render json: @all_usernames
   end
 
+
   private
   def user_params
     params.require(:users).permit(:username, :password)
