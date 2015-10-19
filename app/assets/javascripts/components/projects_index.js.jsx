@@ -31,12 +31,11 @@ window.ProjectsIndex = React.createClass({
   render: function () {
     return (
       <div className="projectindex">
-        <button type="button"
-                className="sm-add-new-project-button btn btn-default"
+        <li className="sm-add-new-project-button"
                 onClick={this.goToNewProjectForm}>
           <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
           <br/>Add New <br/>Project
-          </button>
+          </li>
         <div className="row smallerrow">
         <ul>
           {this.state.projects.map(function(project) {

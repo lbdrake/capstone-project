@@ -26,7 +26,7 @@ window.NavBar = React.createClass({
 
           <div className="collapse navbar-collapse" id="navbar-collapse-1">
             <ul className="nav navbar-nav nav-center nav-bling-container">
-              <li className="nav-bling"><a href="#">Projects<span className="sr-only">(current)</span></a></li>
+              <li className="nav-bling"><a href="#">Projects</a></li>
               <li className="nav-bling"><a href="#">Calendar</a></li>
               <li className="nav-bling"><a href="#">Me</a></li>
             </ul>

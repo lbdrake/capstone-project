@@ -55,16 +55,19 @@
   top: 62px;
   transform: translateX(30px);
   background-color: #9dc82a;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .sm-add-new-project-button:hover {
-  background-color: lightblue;
+  background-color: #8cb326;
   transition: 0.3s;
   box-shadow: 0 0 6px lightgrey;
 }
 
-.sm-add-new-project-button:select {
+.sm-add-new-project-button:active {
   transform: translate(30px, 3px);
   box-shadow: 0 0 6px lightgrey;
-
+  transition: 0s;
 }
