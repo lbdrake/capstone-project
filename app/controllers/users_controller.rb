@@ -15,10 +15,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    @all_usernames = User.findAllUsernames
-    render json: @all_usernames
+    @users = User.findAllUsernames
+    render json: @users
   end
-
 
   private
   def user_params

@@ -47,11 +47,11 @@ class User < ActiveRecord::Base
 
   def self.findAllUsernames
     users = self.all
-    usernames = []
+    usernames_and_ids = []
     users.each do |user|
-      usernames << user.username
+      usernames_and_ids << {id: user.id, username: user.username}
     end
-    return usernames
+    return usernames_and_ids
   end
 
   def self.find_by_credentials(username, password)

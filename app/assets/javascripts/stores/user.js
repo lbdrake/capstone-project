@@ -11,14 +11,13 @@
     },
 
     find: function (username) {
-      var user_id = "";
-      debugger;
-      _users.forEach(function(user, idx){
+      var foundUser = "";
+      _users.forEach(function(user){
         if (user.username === username) {
-          user_id = user.username;
+          foundUser = user;
         }
       });
-      return user_id;
+      return foundUser;
     },
 
     resetUsers: function (users) {

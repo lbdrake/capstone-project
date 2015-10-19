@@ -1,7 +1,7 @@
 window.ProjectForm = React.createClass({
   getInitialState: function () {
-    var noUsersFound = "defaultMessageUsersFound";
     return ({
+      noUsersFound: "defaultMessageUsersFound",
       title: "",
       description: "",
       new_shared_user: "",
@@ -53,7 +53,8 @@ window.ProjectForm = React.createClass({
   },
 
   handleAddUserClick: function (e) {
-    noUsersFound = "defaultMessageUsersFound";
+    this.state.noUsersFound = "defaultMessageUsersFound";
+    foundUser = UserStore.find(this.state.new_shared_user)
     // if this.state.new_shared_user belongs to an account
     //    need query for users, need users store
     //    we will fetchAll users
@@ -64,19 +65,12 @@ window.ProjectForm = React.createClass({
     //this will update our list
     // if user does not have an account, button to send them an email
     // pre-fill out submit, email, link to Sign Up page of site
-      debugger;
-      if (UserStore.find(this.state.username)) {
-          this.setstate({shared_users: shared_users.push(this.state.new_shared_user) });
-          this.setState({new_shared_user: ""});
-        } else {
-          this.replyNoUsersFound();
-          this.setState({new_shared_user: ""});
-        }
-  },
-
-  replyNoUsersFound: function (){
-    noUsersFound = "noUsersFound";
-    return noUsersFound;
+      if (foundUser) {
+        this.state.shared_users.push(foundUser);
+        this.setState({ new_shared_user: "" });
+      } else {
+        this.setState({new_shared_user: "", noUsersFound: "noUsersFound"});
+      }
   },
 
   render: function () {
@@ -127,7 +121,7 @@ window.ProjectForm = React.createClass({
                                onChange={this.updateNewSharedUser}
                                placeholder="Please add a username" />
             <input type="button" onClick={this.handleAddUserClick} value="Add" />
-            <p className={this.noUsersFound}>Sorry, we couldn't find a user with that username, please try again</p>
+            <p className={this.state.noUsersFound} >Sorry, we couldn't find a user with that username, please try again</p>
           </div>
           <input type="submit" value="Save Project"/><span onClick={this.handleCancelClick}> or <u>Cancel</u></span>
 
