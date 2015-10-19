@@ -37,7 +37,7 @@ window.ProjectEditForm = React.createClass({
   },
 
   goToProjectPage: function () {
-    var projectUrl = "/projects/" + ProjectStore.last()[0].id;
+    var projectUrl = "/projects/" + this.state.id;
     this.props.history.pushState(null, projectUrl);
   },
 

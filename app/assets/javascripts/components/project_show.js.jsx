@@ -38,7 +38,7 @@ window.ProjectShow = React.createClass({
   },
 
   handleDeleteProjectClick: function (e) {
-    if (window.confirm("Are you sure you want to delete this project? This action cannot be undone")) {
+    if (window.confirm("Are you sure you want to delete this project?")) {
         ApiUtil.deleteProject(this.state.project);
         this.props.history.pushState(null, "/");
         }
