@@ -5,7 +5,7 @@ window.Tasks = React.createClass({
 
   render: function () {
     return (
-      <ul>
+      <ul className="ulForToDoLists">
         <li key={this.props.todolisttitle}>{this.props.todolisttitle}</li>
         <li>
           <ul>
