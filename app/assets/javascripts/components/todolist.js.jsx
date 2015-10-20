@@ -7,7 +7,7 @@ window.ToDoLists = React.createClass({
     var todolists = this.props.todolists;
     return (
       <div>
-        <p onClick={this.handleAddNewToDoListClick}>To Do Lists <u>Add To Do List</u></p>
+        <h1 className="toDoListHeader">To Do Lists<button onClick={this.handleAddNewToDoListClick} className="btn btn-default btn-xs addToDoListButton ">Add To Do List</button></h1>
         {
           todolists.map (function(todolist) {
             return (
