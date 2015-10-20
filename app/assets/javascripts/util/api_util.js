@@ -9,13 +9,17 @@ ApiUtil = {
     });
   },
 
-  createProject: function(projectinfo) {
+  createProject: function(projectinfo, new_shared_users) {
     $.ajax({
       url: "api/projects",
       type: "post",
       data: {project: projectinfo},
       success: function (response) {
           ApiActions.receiveNewProject(response);
+          ApiUtil.createProjectShares(response.id, new_shared_users);
+      },
+      error: function (response) {
+        console.log("Failure in post to projects");
       }
     });
   },
@@ -65,5 +69,20 @@ ApiUtil = {
         ApiActions.receiveAllUsers(response);
       }
     });
+  },
+
+  createProjectShares: function (project_id, new_shared_users){
+    new_shared_users.forEach(function(new_shared_user){
+      var projectshare = {shared_user_id: new_shared_user.id, project_id: project_id}
+      $.ajax({
+        url: "api/project_shares/",
+        type: "post",
+        data: {projectshare: projectshare},
+        success: function (response) {
+          ApiActions.receiveNewProjectShare(response);
+        }
+      });
+
+    })
   }
 };

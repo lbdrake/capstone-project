@@ -38,5 +38,12 @@ ApiActions = {
       actionType: ProjectConstants.USERS_RECEIVED,
       users: users
     });
+  },
+
+  receiveNewProjectShare: function(project_shares){
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.PROJECT_SHARES_RECEIVED,
+      project_shares: project_shares
+    });
   }
 };

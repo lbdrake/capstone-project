@@ -5,7 +5,7 @@ window.ProjectForm = React.createClass({
       title: "",
       description: "",
       new_shared_user: "",
-      shared_users: [{username: "Eleanora"}]
+      shared_users: []
     });
   },
 
@@ -23,7 +23,7 @@ window.ProjectForm = React.createClass({
     ApiUtil.createProject({
       title: this.state.title,
       description: this.state.description
-    });
+    }, this.state.shared_users);
   },
 
   goToProjectPage: function () {
@@ -55,16 +55,6 @@ window.ProjectForm = React.createClass({
   handleAddUserClick: function (e) {
     this.state.noUsersFound = "defaultMessageUsersFound";
     foundUser = UserStore.find(this.state.new_shared_user)
-    // if this.state.new_shared_user belongs to an account
-    //    need query for users, need users store
-    //    we will fetchAll users
-    //    check if _allUsers.include?(this.state.new_shared_user)
-    // ApiAction, add shared user
-    // json api needs to return shared users
-    // this will update our store
-    //this will update our list
-    // if user does not have an account, button to send them an email
-    // pre-fill out submit, email, link to Sign Up page of site
       if (foundUser) {
         this.state.shared_users.push(foundUser);
         this.setState({ new_shared_user: "" });
@@ -119,7 +109,8 @@ window.ProjectForm = React.createClass({
             </ul>
             <input type="text" name="project[shared_user]"
                                onChange={this.updateNewSharedUser}
-                               placeholder="Please add a username" />
+                               placeholder="Please add a username"
+                               value={this.state.new_shared_user}/>
             <input type="button" onClick={this.handleAddUserClick} value="Add" />
             <p className={this.state.noUsersFound} >Sorry, we couldn't find a user with that username, please try again</p>
           </div>
