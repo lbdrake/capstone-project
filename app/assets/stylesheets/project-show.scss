@@ -1,0 +1,12 @@
+.delete-this-project-link {
+  text-decoration: underline;
+}
+
+.delete-this-project-link:hover {
+  color: red;
+  transition: 0.2s;
+}
+
+.delete-this-project-link:active {
+  transform: translate(0px, 3px);
+}

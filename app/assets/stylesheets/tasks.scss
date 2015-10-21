@@ -1,0 +1,12 @@
+.delete-todolist-icon {
+  display: none;
+}
+
+.todolist-title:hover .delete-todolist-icon {
+  display: inline;
+  padding: 10px;
+}
+
+.delete-todolist-icon:active {
+  color: red;
+}

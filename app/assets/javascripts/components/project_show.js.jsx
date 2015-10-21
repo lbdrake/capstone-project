@@ -55,7 +55,7 @@ window.ProjectShow = React.createClass({
           <ToDoLists project={this.state.project} todolists={this.state.project.todolists || []} />
         </div>
         <div className="panel-footer">
-          <p onClick={this.handleDeleteProjectClick}><u>Delete this project</u></p>
+          <p className="delete-this-project-link" onClick={this.handleDeleteProjectClick}>Delete this project</p>
         </div>
       </div>
     );

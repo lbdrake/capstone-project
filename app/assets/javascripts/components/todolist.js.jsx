@@ -8,7 +8,6 @@ window.ToDoLists = React.createClass({
 
   handleAddNewToDoListClick: function () {
     this.setState({form_open: "form_open"})
-    console.log("Clicked 'Add New To Do List' button - will show a form");
   },
 
   updateToDoListTitle: function (e) {
