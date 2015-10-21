@@ -2,7 +2,7 @@ class Api::ProjectsController < ApplicationController
   before_action :require_sign_in
 
   def index
-    @projects = Project.projects_for_user_id(current_user.id).includes({todolists: :tasks})
+    @projects = Project.projects_for_user_id(current_user.id).includes({todolists: :tasks}).includes(:shared_users)
     render :index
   end
 

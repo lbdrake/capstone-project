@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
     :project_shares,
     class_name: :ProjectShare,
     primary_key: :id,
-    foreign_key: :shared_user_id
+    foreign_key: :shared_user_id,
+    dependent: :destroy
   )
 
   has_many(

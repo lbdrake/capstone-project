@@ -17,19 +17,21 @@ class ProjectShare < ActiveRecord::Base
     :shared_user,
     class_name: :User,
     primary_key: :id,
-    foreign_key: :shared_user_id,
-    dependent: :destroy
+    foreign_key: :shared_user_id
   )
 
   belongs_to(
     :project,
     class_name: :Project,
     primary_key: :id,
-    foreign_key: :project_id,
-    dependent: :destroy
+    foreign_key: :project_id
   )
 
   def self.findByProjectId(project_id)
     ProjectShare.where(project_id: project_id)
+  end
+
+  def self.findByProjectIdAndUserId(project_id, user_id)
+    ProjectShare.where({project_id: project_id, shared_user_id: user_id})
   end
 end
