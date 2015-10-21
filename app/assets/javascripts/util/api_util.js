@@ -106,6 +106,9 @@ ApiUtil = {
       data: {todolist: todolistinfo},
       success: function (response){
         ApiUtil.fetchProjects();
+      },
+      error: function (response) {
+        console.log(response);
       }
     });
   }
