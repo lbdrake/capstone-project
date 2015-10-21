@@ -48,7 +48,6 @@ window.ProjectForm = React.createClass({
   },
 
   handleRemoveUserClick: function (e) {
-    debugger;
     if (e.target.className === "remove-shared-user glyphicon glyphicon-remove-circle") {
       this.state.shared_users.forEach(function(user,idx){
         var index = "";

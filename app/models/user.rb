@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
     :projects,
     class_name: :Project,
     primary_key: :id,
-    foreign_key: :author_id
+    foreign_key: :author_id,
+    dependent: :destroy
   )
 
   has_many(
