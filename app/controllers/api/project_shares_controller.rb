@@ -8,7 +8,7 @@ class Api::ProjectSharesController < ApplicationController
   def create
     @projectshare = ProjectShare.new(projectshare_params)
     if @projectshare.save
-      render @projectshare
+      render json: @projectshare
     else
       render json: @project.errors.full_messages, status: 422
     end
@@ -17,6 +17,15 @@ class Api::ProjectSharesController < ApplicationController
   def show
     @projectshare = ProjectShare.find(params[:id])
     render :show
+  end
+
+  def destroy
+    @projectshare = ProjectShare.find(params[:id])
+    if @projectshare.destroy
+      render json: {}
+    else
+      render json: @projectshare.errors.full_messages, status: 422
+    end
   end
 
   private

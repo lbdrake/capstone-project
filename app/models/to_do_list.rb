@@ -25,6 +25,7 @@ class ToDoList < ActiveRecord::Base
     :tasks,
     class_name: :Task,
     primary_key: :id,
-    foreign_key: :todolist_id
+    foreign_key: :todolist_id,
+    dependent: :destroy
   )
 end

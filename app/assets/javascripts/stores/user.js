@@ -20,6 +20,16 @@
       return foundUser;
     },
 
+    findbyid: function (userId) {
+      var foundUser = "";
+      _users.forEach(function(user){
+        if (user.id === userId) {
+          foundUser = user.username;
+        }
+      });
+      return foundUser;
+    },
+
     resetUsers: function (users) {
       _users = users;
     },

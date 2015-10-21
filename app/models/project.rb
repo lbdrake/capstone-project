@@ -17,14 +17,16 @@ class Project < ActiveRecord::Base
     :user,
     class_name: :User,
     primary_key: :id,
-    foreign_key: :author_id
+    foreign_key: :author_id,
+    dependent: :destroy
   )
 
   has_many(
     :todolists,
     class_name: :ToDoList,
     primary_key: :id,
-    foreign_key: :project_id
+    foreign_key: :project_id,
+    dependent: :destroy
   )
 
   has_many(
@@ -37,7 +39,8 @@ class Project < ActiveRecord::Base
     :project_shares,
     class_name: :ProjectShare,
     primary_key: :id,
-    foreign_key: :project_id
+    foreign_key: :project_id,
+    dependent: :destroy
   )
 
   has_many(

@@ -27,12 +27,6 @@ ApiActions = {
     });
   },
 
-  logoutUser: function(){
-    AppDispatcher.dispatch({
-      actionType: ProjectConstants.LOGOUT_USER
-    });
-  },
-
   receiveAllUsers: function(users){
     AppDispatcher.dispatch({
       actionType: ProjectConstants.USERS_RECEIVED,

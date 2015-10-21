@@ -13,7 +13,7 @@ ApiUtil = {
     $.ajax({
       url: "api/projects",
       type: "post",
-      data: {project: projectinfo},
+      data: projectinfo,
       success: function (response) {
           ApiActions.receiveNewProject(response);
           ApiUtil.createProjectShares(response.id, new_shared_users);
@@ -35,14 +35,16 @@ ApiUtil = {
     });
   },
 
-  editProject: function(project) {
-    var projectUrl = "api/projects/" + project.id;
+  editProject: function(projectinfo, shared_users_to_add, shared_users_to_remove) {
+    var projectUrl = "api/projects/" + projectinfo.id;
     $.ajax({
       url: projectUrl,
       type: "patch",
-      data: {project: project},
+      data: {project: projectinfo},
       success: function (response) {
         ApiActions.editProject(response);
+        ApiUtil.createProjectShares(projectinfo.id, shared_users_to_add);
+        ApiUtil.deleteProjectShares(projectinfo.id, shared_users_to_remove);
       }
     });
   },
@@ -52,11 +54,10 @@ ApiUtil = {
       url: "/session",
       type: "delete",
       success: function (response){
-        ApiActions.logoutUser();
-        window.location.reload(true);
+        window.location = window.location.pathname
       },
       error: function (response) {
-        window.location.reload(true);
+        window.location = window.location.pathname
       }
     });
   },
@@ -79,10 +80,22 @@ ApiUtil = {
         type: "post",
         data: {projectshare: projectshare},
         success: function (response) {
-          ApiActions.receiveNewProjectShare(response);
+          ApiUtil.fetchProjects();
         }
       });
+    })
+  },
 
+  deleteProjectShares: function (project_id, shared_users_to_remove){
+    shared_users_to_remove.forEach(function(shared_user) {
+      var ps_id = shared_user.project_share_id
+      $.ajax({
+        url: "api/project_shares/" + ps_id,
+        type: "delete",
+        success: function (response){
+          ApiUtil.fetchProjects();
+        }
+      });
     })
   }
 };

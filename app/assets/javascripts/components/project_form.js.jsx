@@ -20,10 +20,9 @@ window.ProjectForm = React.createClass({
 
   handleFormSubmit: function (e) {
     e.preventDefault();
-    ApiUtil.createProject({
+    ApiUtil.createProject({ project: {
       title: this.state.title,
-      description: this.state.description
-    }, this.state.shared_users);
+      description: this.state.description }}, this.state.shared_users);
   },
 
   goToProjectPage: function () {
@@ -49,8 +48,19 @@ window.ProjectForm = React.createClass({
   },
 
   handleRemoveUserClick: function (e) {
-    console.log("Remove user button clicked - will remove 'ProjectShare', and flash alert success");
+    debugger;
+    if (e.target.className === "remove-shared-user glyphicon glyphicon-remove-circle") {
+      this.state.shared_users.forEach(function(user,idx){
+        var index = "";
+        if (user.id === UserStore.find(e.target.previousSibling.innerHTML).id) {
+          index = idx;
+        }
+        this.state.shared_users.splice(index, 1)
+        this.setState({shared_users: this.state.shared_users})
+      }.bind(this))
+    }
   },
+
 
   handleAddUserClick: function (e) {
     this.state.noUsersFound = "defaultMessageUsersFound";
@@ -90,7 +100,7 @@ window.ProjectForm = React.createClass({
                <br/>
          </div>
          <div className="form-group">
-            <ul>
+            <ul onClick={this.handleRemoveUserClick} >
               <li className="invite-users-header">These team members are already shared:</li>
             {
               this.state.shared_users.map(function (shared_user) {
@@ -98,9 +108,9 @@ window.ProjectForm = React.createClass({
                   <li key={shared_user.username}
                       className="already-shared">
                     {shared_user.username}
-                    <span onClick={this.handleRemoveUserClick}
+                    <div
                           className="remove-shared-user glyphicon glyphicon-remove-circle">
-                    </span>
+                    </div>
                   </li>
                 );
               })

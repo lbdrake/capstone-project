@@ -53,10 +53,6 @@
       }
     },
 
-    emptyStore: function () {
-      _projects = [];
-    },
-
     dispatcherID: AppDispatcher.register(function(payload){
       switch(payload.actionType){
         case ProjectConstants.PROJECTS_RECEIVED:
@@ -75,10 +71,11 @@
           ProjectStore.editProject(payload.project);
           ProjectStore.emit(PROJECT_CHANGE_EVENT);
           break;
-        case ProjectConstants.LOGOUT_USER:
-          ProjectStore.emptyStore();
-          ProjectStore.emit(PROJECT_CHANGE_EVENT);
+        case ProjectConstants.PROJECT_SHARES_RECEIVED:
+          ProjectStore.resetProjects(payload.projects);
+          ProjectShareStore.emit(PROJECT_CHANGE_EVENT);
           break;
+
       }
     })
   });

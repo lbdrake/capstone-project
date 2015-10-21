@@ -34,7 +34,7 @@ window.ProjectShow = React.createClass({
   handleEditProjectClick: function (e) {
     e.preventDefault();
     var projectUrl = "/projects/" + this.state.project.id + "/edit";
-    this.props.history.pushState(null, projectUrl, this.state.project);
+    this.props.history.pushState(null, projectUrl);
   },
 
   handleDeleteProjectClick: function (e) {

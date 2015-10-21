@@ -19,6 +19,8 @@
       return foundProjectShares;
     },
 
+    resetProjects: function(projects) {},
+
     dispatcherID: AppDispatcher.register(function(payload) {
       switch(payload.actionType){
         case ProjectConstants.PROJECT_SHARES_RECEIVED:
