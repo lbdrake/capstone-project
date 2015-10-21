@@ -5,6 +5,9 @@ ApiUtil = {
       action: "get",
       success: function (response) {
         ApiActions.receiveAll(response);
+      },
+      error: function (response) {
+        console.log(response);
       }
     });
   },
@@ -19,7 +22,7 @@ ApiUtil = {
           ApiUtil.createProjectShares(response.id, new_shared_users);
       },
       error: function (response) {
-        console.log("Failure in post to projects");
+        console.log(response + "Failure in post to projects");
       }
     });
   },
@@ -45,6 +48,9 @@ ApiUtil = {
         ApiActions.editProject(response);
         ApiUtil.createProjectShares(projectinfo.id, shared_users_to_add);
         ApiUtil.deleteProjectShares(projectinfo.id, shared_users_to_remove);
+      },
+      error: function (response) {
+        console.log(response);
       }
     });
   },
@@ -68,6 +74,9 @@ ApiUtil = {
       type: "get",
       success: function (response){
         ApiActions.receiveAllUsers(response);
+      },
+      error: function (response) {
+        console.log(response);
       }
     });
   },
@@ -81,6 +90,9 @@ ApiUtil = {
         data: {projectshare: projectshare},
         success: function (response) {
           ApiUtil.fetchProjects();
+        },
+        error: function (response) {
+          console.log(response);
         }
       });
     })
@@ -94,6 +106,9 @@ ApiUtil = {
         type: "delete",
         success: function (response){
           ApiUtil.fetchProjects();
+        },
+        error: function (response) {
+          console.log(response);
         }
       });
     })
