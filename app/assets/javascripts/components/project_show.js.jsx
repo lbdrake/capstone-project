@@ -46,16 +46,18 @@ window.ProjectShow = React.createClass({
 
   render: function () {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h1>{this.state.project.title} <button onClick={this.handleEditProjectClick} className="btn btn-default btn-xs">edit</button></h1>
-          <h2>{this.state.project.description}</h2>
-        </div>
-        <div className="panel-body">
-          <ToDoLists project={this.state.project} todolists={this.state.project.todolists || []} />
-        </div>
-        <div className="panel-footer">
-          <p className="delete-this-project-link" onClick={this.handleDeleteProjectClick}>Delete this project</p>
+      <div className="project-show-panel">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h1>{this.state.project.title} <button onClick={this.handleEditProjectClick} className="btn btn-default btn-xs">edit</button></h1>
+            <h2>{this.state.project.description}</h2>
+          </div>
+          <div className="panel-body">
+            <ToDoLists project={this.state.project} todolists={this.state.project.todolists || []} />
+          </div>
+          <div className="panel-footer">
+            <p className="delete-this-project-link" onClick={this.handleDeleteProjectClick}>Delete this project</p>
+          </div>
         </div>
       </div>
     );
