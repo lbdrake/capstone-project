@@ -1,0 +1,29 @@
+// Place all the styles related to the todolists controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.addToDoListButton {
+  margin-left: 10px;
+  vertical-align: bottom;
+}
+
+.toDoListHeader {
+  font-size: 1.25em;
+  font-style: bold;
+  display: inline;
+  max-resolution: res;
+}
+
+.toDoListHeader + ul {
+  padding-top: 20px;
+}
+
+.ulForToDoLists {
+}
+
+.form_open {
+  display: block;
+}
+
+.form_closed {
+  display: none;
+}

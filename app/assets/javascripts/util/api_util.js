@@ -97,5 +97,16 @@ ApiUtil = {
         }
       });
     })
+  },
+
+  createToDoList: function (todolistinfo) {
+    $.ajax({
+      url: "api/todolists",
+      type: "post",
+      data: {todolist: todolistinfo},
+      success: function (response){
+        ApiUtil.fetchProjects();
+      }
+    });
   }
 };
