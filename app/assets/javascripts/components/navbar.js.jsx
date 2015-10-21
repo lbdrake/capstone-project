@@ -20,7 +20,7 @@ window.NavBar = React.createClass({
               <span className="icon-bar"></span>
             </button>
             <a className="navbar navbar-brand" href="#" >
-              <img src="/assets/TaskMaster-logo.png" alt="TaskMaster Logo" />
+              <img src="TaskMaster-logo.png" alt="TaskMaster Logo" />
             </a>
           </div>
 
@@ -28,7 +28,7 @@ window.NavBar = React.createClass({
             <ul className="nav navbar-nav nav-center nav-bling-container">
               <li className="nav-bling"><a href="#">Projects</a></li>
               <li className="nav-bling"><a href="#">Calendar</a></li>
-              <li className="nav-bling"><a href="#">Me</a></li>
+              <li className="nav-bling"><a href="#">Me <span className="badge">3</span></a></li>
             </ul>
 
             <ul className="nav nav-stacked navbar-right">
