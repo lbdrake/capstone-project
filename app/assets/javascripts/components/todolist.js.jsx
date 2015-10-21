@@ -31,12 +31,12 @@ window.ToDoLists = React.createClass({
       <div>
         <h1 className="toDoListHeader">To Do Lists<button onClick={this.handleAddNewToDoListClick} className="btn btn-default btn-xs addToDoListButton ">Add a To Do List</button></h1>
           <div className={this.state.form_open}>
-          <form onSubmit={this.handleFormSubmit}>
-            <label htmlFor="title" className="sr-only">Add a To Do List Title:</label>
-            <input id="title" type="text" value={this.state.todolist_title} onChange={this.updateToDoListTitle} placeholder="Add a To Do List title"/>
-            <br/>
-          <input type="submit" value="Save and start adding Tasks" /><span onClick={this.handleCancelClick}> or <u>Cancel</u></span>
-          </form>
+            <form onSubmit={this.handleFormSubmit}>
+              <label htmlFor="title" className="sr-only">Add a To Do List Title:</label>
+              <input id="title" type="text" value={this.state.todolist_title} onChange={this.updateToDoListTitle} placeholder="Add a To Do List title"/>
+              <br/>
+              <input type="submit" value="Save and start adding Tasks" /><span onClick={this.handleCancelClick}> or <u>Cancel</u></span>
+            </form>
           </div>
         {
           todolists.map (function(todolist) {
