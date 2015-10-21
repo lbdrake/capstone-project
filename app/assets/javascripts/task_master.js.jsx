@@ -1,5 +1,4 @@
 $(function () {
-var root = document.getElementById("content")
 var Route = ReactRouter.Route;
 var Router = ReactRouter.Router;
 var IndexRoute = ReactRouter.IndexRoute;
@@ -25,5 +24,7 @@ var routes = (
   </Route>
 );
 
-  React.render(<Router>{routes}</Router>, root);
+  var renderReact = function () {
+    React.render(<Router>{routes}</Router>, document.getElementById("content"));
+  };
 });
