@@ -32,16 +32,16 @@ window.TaskForm = React.createClass({
   },
 
   updateTaskAssignedUser: function (e) {
-    console.log("Assigned User changed - will update state");
     this.setState({taskAssignedUser: e.target.value});
   },
 
   handleFormSubmit: function (e) {
     e.preventDefault;
+    var assigned_user_id = UserStore.find(this.state.taskAssignedUser).id
     ApiUtil.createTask({
       title: this.state.taskTitle,
       description: this.state.taskDescription,
-      assigned_user_id: this.state.taskAssignedUser,
+      assigned_user_id: assigned_user_id,
       todolist_id: parseInt(this.props.todolist.id),
       duedate: this.state.taskDueDate
       }, this.props.project.id);
