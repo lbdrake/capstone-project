@@ -7,8 +7,13 @@
   padding: 10px;
 }
 
-.delete-icon:active {
+.delete-icon:hover {
+  cursor: pointer;
   color: red;
+}
+
+.delete-icon:active {
+  // transform: translate(0px, 2px);
 }
 
 .task-title:hover .delete-icon {
@@ -18,9 +23,19 @@
 
 input.taskcheckbox {
   margin-right: 5px;
+  display: inline;
+}
+
+input.taskcheckbox:hover {
+  cursor: pointer;
 }
 
 input.taskcheckbox:checked + span {
+  text-decoration: line-through;
+  color: grey;
+}
+
+input.taskcheckbox:checked ~ ul {
   text-decoration: line-through;
   color: grey;
 }
