@@ -43,7 +43,8 @@ window.ToDoLists = React.createClass({
                 <Tasks key={todolist.id}
                   todolisttitle={todolist.title}
                   tasks={todolist.tasks}
-                  project={this.props.project} />
+                  project={this.props.project}
+                  projectauthorusername={this.props.authorusername}/>
             );
           }.bind(this))
         }
