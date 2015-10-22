@@ -174,6 +174,23 @@ ApiUtil = {
       type: "delete",
       success: function (response) {
         ApiUtil.fetchSingleProject(projectId);
+      },
+      error: function (response) {
+        console.log(response);
+      }
+    });
+  },
+
+  updateTaskCompletedStatus: function(task, completionStatus, projectId) {
+    $.ajax({
+      url: "api/tasks/" + task.id,
+      type: "patch",
+      data: {task: {completed: completionStatus}},
+      success: function (response) {
+        ApiUtil.fetchSingleProject(projectId);
+      },
+      error: function (response) {
+        console.log(response);
       }
     });
   }
