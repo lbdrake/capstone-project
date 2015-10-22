@@ -12,6 +12,21 @@ ApiUtil = {
     });
   },
 
+  fetchSingleProject: function(projectId) {
+    $.ajax({
+      url: "api/projects/" + projectId,
+      type: "get",
+      success: function (response){
+        ApiActions.receiveSingleProject(response)
+        console.log("fetchSingleProject success")
+      },
+      error: function (response){
+        console.log(response)
+      }
+
+    });
+  },
+
   createProject: function(projectinfo, new_shared_users) {
     $.ajax({
       url: "api/projects",

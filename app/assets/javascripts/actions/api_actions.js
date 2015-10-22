@@ -6,6 +6,13 @@ ApiActions = {
     });
   },
 
+  receiveSingleProject: function (project){
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.SINGLE_PROJECT_RECEIVED,
+      project: project
+    })
+  },
+
   receiveNewProject: function(project){
     AppDispatcher.dispatch({
       actionType: ProjectConstants.NEW_PROJECT_RECEIVED,

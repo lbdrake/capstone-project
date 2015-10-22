@@ -1,7 +1,8 @@
 window.ProjectEditForm = React.createClass({
   getInitialState: function () {
+    ApiUtil.fetchSingleProject(parseInt(this.props.params.projectId));
     var projectId = this.props.params.projectId;
-    var project = this._findProjectById(projectId) || {};
+    var project = this._findProjectById(parseInt(this.props.params.projectId)) || {};
     return ({
       project: project,
       id: projectId,
@@ -26,14 +27,27 @@ window.ProjectEditForm = React.createClass({
   },
 
   componentDidMount: function (){
-    ProjectStore.addChangeListener(this.goToProjectPage);
-    this.setState({shared_users: this.state.original_shared_users.slice(),
-                   author_id: this.state.project.author_id});
+    ProjectStore.addChangeListener(this.updateState);
     ApiUtil.fetchUsers();
+    ApiUtil.fetchSingleProject(parseInt(this.props.params.projectId));
   },
 
   componentWillUnmount: function (){
-    ProjectStore.removeChangeListener(this.goToProjectPage);
+    ProjectStore.removeChangeListener(this.updateState);
+  },
+
+  updateState: function(){
+    var project = this._findProjectById(parseInt(this.props.params.projectId)) || {};
+    this.setState({
+      author_username: UserStore.findbyid(this.state.project.author_id),
+      project: project,
+      id: projectId,
+      title: project.title,
+      description: project.description,
+      author_username: UserStore.findbyid(project.author_id),
+      original_shared_users: project.shared_users,
+      shared_users: this.state.original_shared_users.slice()
+    });
   },
 
   handleFormSubmit: function (e) {
@@ -58,6 +72,7 @@ window.ProjectEditForm = React.createClass({
       title: this.state.title,
       description: this.state.description
     }, shared_users_to_add, shared_users_to_remove);
+    this.goToProjectPage();
   },
 
   goToProjectPage: function () {
@@ -120,6 +135,7 @@ window.ProjectEditForm = React.createClass({
             <input type="text"
                    name="project[title]"
                    placeholder="Name the project"
+                   className="form-control"
                    onChange={this.updateTitle}
                    value={this.state.title} />
         </div>
@@ -128,13 +144,14 @@ window.ProjectEditForm = React.createClass({
                  name="project[description]"
                  placeholder="Add a project description with more info for the team (optional)"
                  onChange={this.updateDescription}
+                 className="form-control"
                  value={this.state.description} />
          <br/>
        </div>
        <div className="form-group">
           <ul onClick={this.handleRemoveUserClick}>
             <li className="invite-users-header">These team members are already shared:</li>
-            <li>{this.state.author_username} (owner)</li>
+            <li className="already-shared">{this.state.author_username} (owner)</li>
           {
             this.state.shared_users.map(function (shared_user) {
               return(
