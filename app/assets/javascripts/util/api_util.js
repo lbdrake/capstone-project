@@ -142,6 +142,17 @@ ApiUtil = {
     });
   },
 
+  deleteToDoList: function(todolist, projectId) {
+    var toDoListUrl = "api/todolists/" + todolist.id;
+    $.ajax({
+      url: toDoListUrl,
+      type: "delete",
+      success: function (response) {
+        ApiUtil.fetchSingleProject(projectId);
+      }
+    });
+  },
+
   createTask: function (taskinfo, projectId) {
     $.ajax({
       url: "api/tasks",
@@ -152,6 +163,17 @@ ApiUtil = {
       },
       error: function (response) {
         console.log(response);
+      }
+    });
+  },
+
+  deleteTask: function(task, projectId) {
+    var taskUrl = "api/tasks/" + task.id;
+    $.ajax({
+      url: taskUrl,
+      type: "delete",
+      success: function (response) {
+        ApiUtil.fetchSingleProject(projectId);
       }
     });
   }

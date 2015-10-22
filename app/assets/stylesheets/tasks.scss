@@ -1,12 +1,17 @@
-.delete-todolist-icon {
+.delete-icon {
   display: none;
 }
 
-.todolist-title:hover .delete-todolist-icon {
+.todolist-title:hover .delete-icon {
   display: inline;
   padding: 10px;
 }
 
-.delete-todolist-icon:active {
+.delete-icon:active {
   color: red;
+}
+
+.task-title:hover .delete-icon {
+  display: inline;
+  padding: 10px;
 }

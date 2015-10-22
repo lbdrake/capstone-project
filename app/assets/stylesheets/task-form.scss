@@ -1,0 +1,36 @@
+div.showtaskform-false {
+  display: none;
+}
+
+div.showtaskform-true {
+  display: block;
+  width: 60%;
+  background-color: white;
+  border: 1px solid lightgrey;
+  box-shadow: 0 0 6px lightgrey;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+}
+
+p.showtaskform-false {
+  display: block;
+  text-decoration: underline;
+}
+
+p.showtaskform-false:hover {
+  background-color: lightgreen;
+}
+p.showtaskform-true {
+  display: none;
+}
+
+.form-cancel-element:hover {
+  color: red;
+}
+
+.form-cancel-element {
+  display: inline;
+  text-decoration: underline;
+  margin-left: 5px;
+}
