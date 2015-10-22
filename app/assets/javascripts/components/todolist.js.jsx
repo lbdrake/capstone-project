@@ -41,7 +41,7 @@ window.ToDoLists = React.createClass({
           todolists.map (function(todolist) {
             return (
                 <Tasks key={todolist.id}
-                  todolisttitle={todolist.title}
+                  todolist={todolist}
                   tasks={todolist.tasks}
                   project={this.props.project}
                   projectauthorusername={this.props.authorusername}/>

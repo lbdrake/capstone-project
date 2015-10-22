@@ -18,7 +18,6 @@ ApiUtil = {
       type: "get",
       success: function (response){
         ApiActions.receiveSingleProject(response)
-        console.log("fetchSingleProject success")
       },
       error: function (response){
         console.log(response)
@@ -136,6 +135,20 @@ ApiUtil = {
       data: {todolist: todolistinfo},
       success: function (response){
         ApiUtil.fetchProjects();
+      },
+      error: function (response) {
+        console.log(response);
+      }
+    });
+  },
+
+  createTask: function (taskinfo, projectId) {
+    $.ajax({
+      url: "api/tasks",
+      type: "post",
+      data: {task: taskinfo},
+      success: function (response) {
+        ApiUtil.fetchSingleProject(projectId);
       },
       error: function (response) {
         console.log(response);

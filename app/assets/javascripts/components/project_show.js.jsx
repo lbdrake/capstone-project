@@ -2,7 +2,10 @@ window.ProjectShow = React.createClass({
   getInitialState: function () {
     var projectId = parseInt(this.props.params.projectId);
     var project = this._findProjectById(projectId) || {};
-    return ({ project: project });
+    return ({
+      project: project,
+      authorusername: UserStore.findbyid(parseInt(this.props.params.projectId))
+      });
 
   },
   _findProjectById: function () {
@@ -18,17 +21,26 @@ window.ProjectShow = React.createClass({
 
   componentDidMount: function () {
     ProjectStore.addChangeListener(this._updateProjectInfo);
-    ApiUtil.fetchProjects();
+    ProjectStore.addChangeListener(this._updateAuthorInfo);
+    ApiUtil.fetchSingleProject(parseInt(this.props.params.projectId));
+    ApiUtil.fetchUsers();
   },
 
   componentWillUnmount: function () {
     ProjectStore.removeChangeListener(this._updateProjectInfo);
+    ProjectStore.removeChangeListener(this._updateAuthorInfo);
   },
 
   _updateProjectInfo: function () {
     var projectId = parseInt(this.props.params.projectId);
     var project = this._findProjectById(projectId);
     this.setState({ project: project });
+  },
+
+  _updateAuthorInfo: function () {
+    this.setState({
+      authorusername: UserStore.findbyid(parseInt(this.props.params.projectId))
+    })
   },
 
   handleEditProjectClick: function (e) {
@@ -53,7 +65,7 @@ window.ProjectShow = React.createClass({
             <h2>{this.state.project.description}</h2>
           </div>
           <div className="panel-body">
-            <ToDoLists authorusername={UserStore.findbyid(parseInt(this.props.params.projectId))} project={this.state.project} todolists={this.state.project.todolists || []} />
+            <ToDoLists authorusername={this.state.authorusername} project={this.state.project} todolists={this.state.project.todolists || []} />
           </div>
           <div className="panel-footer">
             <p className="delete-this-project-link" onClick={this.handleDeleteProjectClick}>Delete this project</p>
