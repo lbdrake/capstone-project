@@ -50,6 +50,8 @@
       if (index) {
         _projects.splice(index, 1);
         _projects.push(project);
+      } else {
+        _projects.push(project);
       }
     },
 
@@ -73,6 +75,10 @@
           break;
         case ProjectConstants.PROJECT_SHARES_RECEIVED:
           ProjectStore.resetProjects(payload.projects);
+          ProjectShareStore.emit(PROJECT_CHANGE_EVENT);
+          break;
+        case ProjectConstants.SINGLE_PROJECT_RECEIVED:
+          ProjectStore.editProject(payload.project);
           ProjectShareStore.emit(PROJECT_CHANGE_EVENT);
           break;
 
