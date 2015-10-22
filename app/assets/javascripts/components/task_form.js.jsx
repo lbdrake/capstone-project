@@ -12,7 +12,6 @@ window.TaskForm = React.createClass({
   },
 
   handleNewTaskClick: function (e) {
-    debugger;
     this.setState({showTaskForm: "showtaskform-true"});
     console.log("Clicked 'Add New Task' button - will load form");
   },
@@ -65,9 +64,9 @@ window.TaskForm = React.createClass({
       <p onClick={this.handleNewTaskClick} className={this.state.showTaskForm}>Add Task</p>
       <div className={this.state.showTaskForm}>
         <form onSubmit={this.handleFormSubmit}>
-          <input type="text" placeholder="Add a Task title" onChange={this.updateTaskTitle} value={this.state.taskTitle} />
+          <input type="text" placeholder="Add a Task title" className="form-control" onChange={this.updateTaskTitle} value={this.state.taskTitle} />
           <br/>
-          <input type="text" placeholder="Description (optional)" onChange={this.updateTaskDescription} value={this.state.TaskDescription} />
+          <input type="text" placeholder="Description (optional)" className="form-control" onChange={this.updateTaskDescription} value={this.state.TaskDescription} />
           <br/>
           <input  type="date" onChange={this.updateTaskDueDate} value={this.state.TaskDueDate} />
             <div className="form-group">
@@ -83,7 +82,7 @@ window.TaskForm = React.createClass({
                 }
               </select>
             </div>
-            <input type="submit" value="Save Task" /><p onClick={this.handleCancelClick}>or Cancel</p>
+            <input type="submit" value="Save Task" /><p className="form-cancel-element" onClick={this.handleCancelClick}>or Cancel</p>
         </form>
       </div>
       </div>

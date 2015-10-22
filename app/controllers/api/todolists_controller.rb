@@ -8,6 +8,15 @@ class Api::TodolistsController < ApplicationController
     end
   end
 
+  def destroy
+    @todolist = ToDoList.find_by_id(params[:id])
+    if @todolist.destroy
+      render json: @todolist
+    else
+      render json: @todolist.errors.full_messages, status: 422
+    end
+  end
+
   private
   def todolist_params
     params.require(:todolist).permit(:project_id, :title)
