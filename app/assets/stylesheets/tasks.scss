@@ -15,3 +15,12 @@
   display: inline;
   padding: 10px;
 }
+
+input.taskcheckbox {
+  margin-right: 5px;
+}
+
+input.taskcheckbox:checked + span {
+  text-decoration: line-through;
+  color: grey;
+}
