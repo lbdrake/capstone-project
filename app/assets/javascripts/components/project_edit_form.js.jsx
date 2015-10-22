@@ -28,20 +28,28 @@ window.ProjectEditForm = React.createClass({
 
   componentDidMount: function (){
     ProjectStore.addChangeListener(this.updateState);
+    UserStore.addChangeListener(this.updateState);
     ApiUtil.fetchUsers();
     ApiUtil.fetchSingleProject(parseInt(this.props.params.projectId));
   },
 
   componentWillUnmount: function (){
     ProjectStore.removeChangeListener(this.updateState);
+    UserStore.removeChangeListener(this.updateState);
+  },
+
+  updateAuthor: function () {
+    var project = this._findProjectById(parseInt(this.props.params.projectId)) || {};
+    this.setState({
+      author_username: UserStore.findbyid(this.state.project.author_id),
+    });
   },
 
   updateState: function(){
     var project = this._findProjectById(parseInt(this.props.params.projectId)) || {};
     this.setState({
-      author_username: UserStore.findbyid(this.state.project.author_id),
       project: project,
-      id: projectId,
+      id: project.id,
       title: project.title,
       description: project.description,
       author_username: UserStore.findbyid(project.author_id),

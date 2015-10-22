@@ -24,5 +24,8 @@ var routes = (
   </Route>
 );
 
+window.renderReact = function () {
   React.render(<Router>{routes}</Router>, document.getElementById("content"));
+};
+  // React.render(<Router>{routes}</Router>, document.getElementById("content"));
 });

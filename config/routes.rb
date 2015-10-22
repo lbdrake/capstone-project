@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :projects
     resources :project_shares
     resources :todolists
+    resources :tasks
   end
 end

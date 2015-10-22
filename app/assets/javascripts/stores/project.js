@@ -75,11 +75,11 @@
           break;
         case ProjectConstants.PROJECT_SHARES_RECEIVED:
           ProjectStore.resetProjects(payload.projects);
-          ProjectShareStore.emit(PROJECT_CHANGE_EVENT);
+          ProjectStore.emit(PROJECT_CHANGE_EVENT);
           break;
         case ProjectConstants.SINGLE_PROJECT_RECEIVED:
           ProjectStore.editProject(payload.project);
-          ProjectShareStore.emit(PROJECT_CHANGE_EVENT);
+          ProjectStore.emit(PROJECT_CHANGE_EVENT);
           break;
 
       }

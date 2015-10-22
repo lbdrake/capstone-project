@@ -1,14 +1,4 @@
 window.Tasks = React.createClass({
-  getInitialState: function () {
-    return ({
-      showTaskForm: false
-    })
-  },
-
-  handleNewTaskClick: function (e) {
-    this.setState({showTaskForm: true});
-    console.log("Clicked 'Add New Task' button - will load form");
-  },
 
   handleDeleteToDoListClick: function (e) {
     setTimeout(function () {if (window.confirm("Are you sure you want to delete this to do list?")) {
@@ -20,7 +10,7 @@ window.Tasks = React.createClass({
     return (
       <div>
       <ul className="ulForToDoLists">
-        <li key={this.props.todolisttitle} className="todolist-title">{this.props.todolisttitle} <span onClick={this.handleDeleteToDoListClick} className="glyphicon glyphicon-trash delete-todolist-icon"></span></li>
+        <li key={this.props.todolist.id} className="todolist-title">{this.props.todolist.title} <span onClick={this.handleDeleteToDoListClick} className="glyphicon glyphicon-trash delete-todolist-icon"></span></li>
         <li>
           <ul>
             {
@@ -33,7 +23,7 @@ window.Tasks = React.createClass({
           </ul>
         </li>
       </ul>
-      { this.state.showTaskForm ? <TaskForm projectauthorusername={this.props.projectauthorusername} project={this.props.project} /> : <p onClick={this.handleNewTaskClick}><u>Add Task</u></p> }
+      <TaskForm projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>
       </div>
     );
   }

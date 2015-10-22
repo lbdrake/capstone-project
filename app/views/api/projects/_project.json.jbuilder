@@ -9,7 +9,7 @@ if project.project_shares
 end
 
 json.todolists project.todolists do |todolist|
-  json.extract!(todolist, :title, :archived, :updated_at)
+  json.extract!(todolist, :title, :id, :archived, :updated_at)
   json.tasks todolist.tasks do |task|
     json.extract!(task, :title, :description, :author_id, :assigned_user_id, :completed, :duedate, :updated_at)
   end
