@@ -13,7 +13,6 @@ window.TaskForm = React.createClass({
 
   handleNewTaskClick: function (e) {
     this.setState({showTaskForm: "showtaskform-true"});
-    console.log("Clicked 'Add New Task' button - will load form");
   },
 
   handleCancelClick: function (e) {
@@ -21,18 +20,15 @@ window.TaskForm = React.createClass({
   },
 
   updateTaskTitle: function (e) {
-    console.log("Task title changed - will update state");
     this.setState({taskTitle: e.target.value});
   },
 
   updateTaskDescription: function (e) {
-    console.log("Task description changed - will update state");
     this.setState({taskDescription: e.target.value});
   },
 
   updateTaskDueDate: function (e) {
-    console.log("Due date clicked - will update state");
-    this.setState({TaskDueDate: e.target.value});
+    this.setState({taskDueDate: e.target.value});
   },
 
   updateTaskAssignedUser: function (e) {
@@ -68,7 +64,7 @@ window.TaskForm = React.createClass({
           <br/>
           <input type="text" placeholder="Description (optional)" className="form-control" onChange={this.updateTaskDescription} value={this.state.TaskDescription} />
           <br/>
-          <input  type="date" onChange={this.updateTaskDueDate} value={this.state.TaskDueDate} />
+          <input  type="date" onChange={this.updateTaskDueDate} value={this.state.taskDueDate} />
             <div className="form-group">
               <label htmlFor="assigneduser">Assign this task:</label>
               <select onChange={this.updateTaskAssignedUser} className="form-control" id="assigneduser">
