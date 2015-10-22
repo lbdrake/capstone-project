@@ -9,8 +9,17 @@ class Api::TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find_by_id(params[:id])
+    @task = Task.find(params[:id])
     if @task.destroy
+      render json: @task
+    else
+      render json: @task.errors.full_messages, status: 422
+    end
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
       render json: @task
     else
       render json: @task.errors.full_messages, status: 422
@@ -19,6 +28,6 @@ class Api::TasksController < ApplicationController
 
   private
   def task_params
-    params.require(:task).permit(:title, :description, :duedate, :todolist_id )
+    params.require(:task).permit(:title, :description, :duedate, :todolist_id, :completed )
   end
 end

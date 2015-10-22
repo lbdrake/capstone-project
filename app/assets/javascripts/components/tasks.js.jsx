@@ -21,7 +21,7 @@ window.Tasks = React.createClass({
             {
               this.props.tasks.map(function(task){
                 return (
-                  <SingleTask task={task} todolist={this.props.todolist}/>
+                  <SingleTask task={task} todolist={this.props.todolist} project={this.props.project}/>
                 );
               }.bind(this))
             }
