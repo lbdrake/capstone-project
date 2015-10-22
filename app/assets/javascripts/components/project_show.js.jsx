@@ -53,7 +53,7 @@ window.ProjectShow = React.createClass({
             <h2>{this.state.project.description}</h2>
           </div>
           <div className="panel-body">
-            <ToDoLists project={this.state.project} todolists={this.state.project.todolists || []} />
+            <ToDoLists authorusername={UserStore.findbyid(parseInt(this.props.params.projectId))} project={this.state.project} todolists={this.state.project.todolists || []} />
           </div>
           <div className="panel-footer">
             <p className="delete-this-project-link" onClick={this.handleDeleteProjectClick}>Delete this project</p>
