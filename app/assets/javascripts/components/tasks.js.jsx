@@ -32,11 +32,16 @@ window.Tasks = React.createClass({
             {
               this.props.tasks.map(function(task){
                 return (
-                <li className="task-title" key={task.id}>{task.title}
-                  <span onClick={this.handleDeleteTaskClick(task)}
-                        className="glyphicon glyphicon-trash delete-icon">
-                  </span>
-                </li>
+                  <div>
+
+                    <li className="task-title" key={task.id}>
+                      <input type="checkbox" value="1" className="taskcheckbox" />
+                      <span>{task.title}</span>
+                      <span onClick={this.handleDeleteTaskClick(task)}
+                            className="glyphicon glyphicon-trash delete-icon">
+                      </span>
+                    </li>
+                  </div>
                 );
               }.bind(this))
             }
