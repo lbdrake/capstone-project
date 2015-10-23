@@ -1,6 +1,21 @@
 window.SingleTask = React.createClass({
   getInitialState: function () {
-      return ({ completed: this.props.task.completed || false })
+      return ({
+        completed: this.props.task.completed || false
+       })
+  },
+
+  componentDidMount: function () {
+    UserStore.addChangeListener(this.updateAssignedUsers);
+    ApiUtil.fetchUsers();
+  },
+
+  componentWillUnmount: function () {
+    UserStore.removeChangeListener(this.updateAssignedUsers);
+  },
+
+  updateAssignedUsers: function () {
+    this.setState({})
   },
 
   handleDeleteTaskClick: function (task) {
@@ -15,8 +30,16 @@ window.SingleTask = React.createClass({
   },
 
   render: function () {
+    var date = "";
+    if (this.props.task.duedate) {
+      date = "due " + new Date(this.props.task.duedate).toDateString()
+    }
+    var assigned_user = "";
+    if (this.props.task.assigned_user_id) {
+      assigned_user = "assigned to " + UserStore.findbyid(this.props.task.assigned_user_id)
+    }
     return (
-      <div>
+      <div className="single-task-item">
         <li className="task-title" key={this.props.task.id}>
           <input type="checkbox"
                  value="1"
@@ -28,6 +51,7 @@ window.SingleTask = React.createClass({
                     className="glyphicon glyphicon-trash delete-icon"></span>
               <ul>
                 <li className="task-description">{this.props.task.description}</li>
+                <li className="assigned-user-and-due-date">{assigned_user} {date}</li>
               </ul>
             </input>
           </li>

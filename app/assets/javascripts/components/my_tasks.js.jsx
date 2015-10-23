@@ -15,7 +15,7 @@ window.MyTasks = React.createClass({
   },
 
   updateTaskList: function () {
-    this.setState({my_tasks: TaskStore.all().sort})
+    this.setState({my_tasks: TaskStore.all()})
   },
 
   render: function () {

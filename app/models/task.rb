@@ -46,6 +46,6 @@ class Task < ActiveRecord::Base
   )
 
   def self.findByAssignedUser(user_id)
-    Task.where(assigned_user_id: user_id)
+    Task.where(assigned_user_id: user_id).order(duedate: :desc, created_at: :desc)
   end
 end

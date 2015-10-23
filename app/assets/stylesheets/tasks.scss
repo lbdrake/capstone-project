@@ -26,6 +26,10 @@ input.taskcheckbox {
   display: inline;
 }
 
+.single-task-item {
+  // border: 1px solid lightgrey;
+}
+
 input.taskcheckbox:hover {
   cursor: pointer;
 }
@@ -38,4 +42,8 @@ input.taskcheckbox:checked + span {
 input.taskcheckbox:checked ~ ul {
   text-decoration: line-through;
   color: grey;
+}
+
+.task-description {
+  font-style: italic;
 }

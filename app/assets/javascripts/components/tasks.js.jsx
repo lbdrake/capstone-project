@@ -5,7 +5,6 @@ window.Tasks = React.createClass({
     }}.bind(this), 200)
   },
 
-
   render: function () {
     return (
       <div>
@@ -25,10 +24,10 @@ window.Tasks = React.createClass({
                 );
               }.bind(this))
             }
+          <TaskForm projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>
           </ul>
         </li>
       </ul>
-      <TaskForm projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>
       </div>
     );
   }
