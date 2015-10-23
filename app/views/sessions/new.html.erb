@@ -1,22 +1,39 @@
-<h1>SIGN IN</h1>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img class="navbar-brand" src="TaskMaster-logo.png" alt="TaskMaster Logo" />
+      <p class="navbar-text">Organize Your Team, Optimize Your Projects</p>
+    </div>
+  </div>
+</nav>
 
-<ul>
-  <% if flash[:errors] %>
-    <% flash[:errors].each do |error| %>
-      <li class="bg-success"><%= error %></li>
-    <% end %>
-  <% end %>
-</ul>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Welcome Back to TaskMaster</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+          <li class="bg-success"><%= error %></li>
+        <% end %>
+      <% end %>
+    </ul>
 
-<form class="signinform" action="/session" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <label for="username">Your username</label>
-  <input type="text" name="users[username]" value="<%= @user.username %>">
-  <label for="password">Password</label>
-  <input type="password" name="users[password]" value="">
-  <input type="submit" value="Login">
-</form>
-<p>Or, <a href="/users/new">create a new account</a></p>
+    <form class="signinform" action="/session" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <label for="username">Your username</label>
+      <input type="text" name="users[username]" value="<%= @user.username %>">
+      <label for="password">Password</label>
+      <input type="password" name="users[password]" value="">
+      <input type="submit" value="Login">
+    </form>
+    </div>
+    <div class="panel-footer"><p>Are you new to TaskMaster? <a href="/users/new">Create a new account</a></p>
+</div>
+</div>
+
+
 <!-- <h4>Sally Ride, first American woman in space,
     could use TaskMaster to manage her team and even go to space!</h4>
 <button class="btn btn-default btn-lg" onClick="" > Login as Sally Ride </button> -->
