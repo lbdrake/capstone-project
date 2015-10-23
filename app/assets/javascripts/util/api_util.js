@@ -154,7 +154,6 @@ ApiUtil = {
   },
 
   createTask: function (taskinfo, projectId) {
-    debugger;
     $.ajax({
       url: "api/tasks",
       type: "post",
