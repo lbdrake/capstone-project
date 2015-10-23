@@ -16,48 +16,40 @@
 <div class="jumbotron">
   <div class="row">
     <div class="col-sm-6">
-  <h1>Ready to get more organized?</h1>
-  <p>TaskMaster is a project management app for teams. Create accounts for your team to share projects and assign tasks.</p>
+      <h1>Ready to get more organized?</h1>
+      <p>TaskMaster is a project management app for teams. Create accounts for your team to share projects and assign tasks.</p>
+    </div>
+    <div class="col-sm-6">
+      <div class="well">
+        <div class="sign-up-box">
+          <h1>SIGN UP!</h1>
+            <ul>
+              <% if flash.now[:errors] %>
+                <% flash.now[:errors].each do |error| %>
+                  <li class="bg-success"><%= error %></li>
+                <% end %>
+              <% end %>
+            </ul>
+            <form class="signupform" action="/users" method="post">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <div class="form-group">
+                <label for="username">New Username</label>
+                <input type="text" class="form-control" placeholder="Username" name="users[username]" value="<%= @user.username %>" id="username">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="users[password]" value="" id="password">
+              </div>
+              <button type="submit" class="btn btn-default">Launch My TaskMaster</button>
+            </form>
+        <p class="help-block">Already have an account? <a href="/session/new">Log in here</a></p>
+      </div>
+    </div>
   </div>
-  <div class="col-sm-6">
-  <div class="sign-up-box">
-  <h1>SIGN UP!</h1>
-  <ul>
-    <% if flash.now[:errors] %>
-      <% flash.now[:errors].each do |error| %>
-        <li class="bg-success"><%= error %></li>
-      <% end %>
-    <% end %>
-  </ul>
-
-  <form class="signupform" action="/users" method="post">
+  <form class="demosigninform" action="/session" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <div class="form-group">
-      <label for="username">New Username</label>
-      <input type="text" name="users[username]" value="<%= @user.username %>" id="username">
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" name="users[password]" value="" id="password">
-    </div>
-    <input type="submit" value="Launch My TaskMaster">
+    <input type="hidden" name="users[username]" value="SallyRide">
+    <input type="hidden" name="users[password]" value="spacetime">
+    <button onclick="window.location.href='/session/new'" type="submit" class="demosigninform btn btn-default">DEMO LOGIN</button>
   </form>
-  <p>Already have an account? <a href="/session/new">Log in here</a></p>
 </div>
-  </div>
-</div>
-<!--
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="..." alt="...">
-    </a>
-  </div>
-  ...
-</div> -->
-
-
-
-<!-- <h4>Sally Ride, first American woman in space,
-    could use TaskMaster to manage her team and even go to space!</h4>
-<button class="btn btn-default btn-lg" onClick="" > Login as Sally Ride </button> -->
