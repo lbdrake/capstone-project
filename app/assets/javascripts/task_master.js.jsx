@@ -7,7 +7,7 @@ var App = React.createClass({
   render: function () {
     return (
       <div>
-        <NavBar />
+        <NavBar history={this.props.history}/>
         {this.props.children}
       </div>
     );
@@ -18,9 +18,9 @@ var routes = (
   <Route path="/" component={App}>
     <IndexRoute component={ProjectsIndex} />
     <Route path="projects/new" component={ProjectForm} />
-    <Route path="projects/:projectId" component={ProjectShow} >
-    </Route>
+    <Route path="projects/:projectId" component={ProjectShow} />
     <Route path="projects/:projectId/edit" component={ProjectEditForm} />
+    <Route path="my-tasks" component={MyTasks} />
   </Route>
 );
 

@@ -26,6 +26,10 @@ class Api::TasksController < ApplicationController
     end
   end
 
+  def index
+    @tasks = Task.findByAssignedUser(current_user.id)
+  end
+
   private
   def task_params
     params.require(:task).permit(:title, :description, :duedate, :todolist_id, :completed, :assigned_user_id )

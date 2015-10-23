@@ -46,5 +46,12 @@ ApiActions = {
       actionType: ProjectConstants.PROJECT_SHARES_RECEIVED,
       project_shares: project_shares
     });
+  },
+
+  receiveMyTasks: function (tasks) {
+    AppDispatcher.dispatch({
+      actionType: ProjectConstants.TASKS_RECEIVED,
+      tasks: tasks
+    });
   }
 };
