@@ -1,25 +1,63 @@
-<h1>SIGN UP!</h1>
-<ul>
-  <% if flash.now[:errors] %>
-    <% flash.now[:errors].each do |error| %>
-      <li class="bg-success"><%= error %></li>
-    <% end %>
-  <% end %>
-</ul>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img class="navbar-brand" src="TaskMaster-logo.png" alt="TaskMaster Logo" />
+      <p class="navbar-text">Organize Your Team, Optimize Your Projects</p>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/session/new">Already have an account?</a></li>
+      <li><button onclick="window.location.href='/session/new'" type="button" class="btn btn-default navbar-btn">
+        <span>Sign In</span>
+      </button></li>
+    </ul>
+  </div>
+</nav>
 
-<form class="signupform" action="/users" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <div class="form-group">
-    <label for="username">New Username</label>
-    <input type="text" name="users[username]" value="<%= @user.username %>" id="username">
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-sm-6">
+  <h1>Ready to get more organized?</h1>
+  <p>TaskMaster is a project management app for teams. Create accounts for your team to share projects and assign tasks.</p>
   </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" name="users[password]" value="" id="password">
+  <div class="col-sm-6">
+  <div class="sign-up-box">
+  <h1>SIGN UP!</h1>
+  <ul>
+    <% if flash.now[:errors] %>
+      <% flash.now[:errors].each do |error| %>
+        <li class="bg-success"><%= error %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <form class="signupform" action="/users" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="form-group">
+      <label for="username">New Username</label>
+      <input type="text" name="users[username]" value="<%= @user.username %>" id="username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="users[password]" value="" id="password">
+    </div>
+    <input type="submit" value="Launch My TaskMaster">
+  </form>
+  <p>Already have an account? <a href="/session/new">Log in here</a></p>
+</div>
   </div>
-  <input type="submit" value="Launch My TaskMaster">
-</form>
-<p>Already have an account? <a href="/session/new">Log in here</a></p>
+</div>
+<!--
+<div class="row">
+  <div class="col-xs-6 col-md-3">
+    <a href="#" class="thumbnail">
+      <img src="..." alt="...">
+    </a>
+  </div>
+  ...
+</div> -->
+
+
+
 <!-- <h4>Sally Ride, first American woman in space,
     could use TaskMaster to manage her team and even go to space!</h4>
 <button class="btn btn-default btn-lg" onClick="" > Login as Sally Ride </button> -->

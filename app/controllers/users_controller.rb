@@ -8,12 +8,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @project_data = ({title: "Discover TaskMaster", description: "Take a quick feature tour"})
     @todolist_data = ({title: "Add a to do list"})
-    @task_data = ({title: "Click the checkbox to mark as complete", assigned_user_id: @user.id})
+    @task_data = ({title: "Click the checkbox to mark as complete"})
     if @user.save
       signin(@user)
       @new_project = @user.projects.create(@project_data)
       @new_todolist = @new_project.todolists.create(@todolist_data)
-      @new_tasks = @new_todolist.tasks.create!(@task_data.merge({author_id: current_user.id}))
+      @new_tasks = @new_todolist.tasks.create!(@task_data.merge({author_id: current_user.id, assigned_user_id: current_user.id}))
       redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages
