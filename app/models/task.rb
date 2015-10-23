@@ -44,4 +44,8 @@ class Task < ActiveRecord::Base
     through: :todolist,
     source: :project
   )
+
+  def self.findByAssignedUser(user_id)
+    Task.where(assigned_user_id: user_id)
+  end
 end

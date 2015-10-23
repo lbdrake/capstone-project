@@ -194,5 +194,18 @@ ApiUtil = {
         console.log(response);
       }
     });
+  },
+
+  fetchMyTasks: function () {
+    $.ajax({
+      url: "api/tasks",
+      type: "get",
+      success: function (response) {
+        ApiActions.receiveMyTasks(response)
+      },
+      error: function (response) {
+        console.log(response)
+      }
+    });
   }
 };

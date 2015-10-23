@@ -58,7 +58,7 @@ window.ProjectShow = React.createClass({
 
   render: function () {
     return (
-      <div className="project-show-panel">
+      <div className="general-show-panel">
         <div className="panel panel-default">
           <div className="panel-heading">
             <h1>{this.state.project.title} <button onClick={this.handleEditProjectClick} className="btn btn-default btn-xs">edit</button></h1>

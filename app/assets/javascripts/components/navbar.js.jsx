@@ -1,7 +1,16 @@
 window.NavBar = React.createClass({
+
+  getInitialState: function () {
+    return (null)
+  },
+
   logoutUser: function (e) {
     e.preventDefault();
     ApiUtil.logoutUser();
+  },
+
+  goToMyTasksPage: function () {
+      this.props.history.pushState(null, "/my-tasks");
   },
 
   render: function (){
@@ -28,7 +37,7 @@ window.NavBar = React.createClass({
             <ul className="nav navbar-nav nav-center nav-bling-container">
               <li className="nav-bling"><a href="#">Projects</a></li>
               <li className="nav-bling"><a href="#">Calendar</a></li>
-              <li className="nav-bling"><a href="#">Me <span className="badge">3</span></a></li>
+              <li className="nav-bling"><a onClick={this.goToMyTasksPage}>Me <span className="badge">3</span></a></li>
             </ul>
 
             <ul className="nav nav-stacked navbar-right">
