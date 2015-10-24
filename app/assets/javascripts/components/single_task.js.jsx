@@ -1,29 +1,4 @@
 window.SingleTask = React.createClass({
-  // getInitialState: function () {
-  //     return ({
-  //      })
-  // },
-  //
-  // componentDidMount: function () {
-  //   UserStore.addChangeListener(this.updateAssignedUsers);
-  //   TaskStore.addChangeListener(this.updateTaskCompletedStatus);
-  //   ApiUtil.fetchUsers();
-  //   ApiUtil.fetchMyTasks();
-  // },
-  //
-  // componentWillUnmount: function () {
-  //   UserStore.removeChangeListener(this.updateAssignedUsers);
-  //   TaskStore.removeChangeListener(this.updateTaskCompletedStatus);
-  // },
-  //
-  // updateAssignedUsers: function () {
-  //   this.setState({})
-  // },
-  //
-  // updateTaskCompletedStatus: function () {
-  //   this.setState({})
-  // },
-
   handleDeleteTaskClick: function (task) {
     setTimeout(function () {if (window.confirm("Are you sure you want to delete this task?")) {
       ApiUtil.deleteTask(this.props.task, this.props.project.id);
@@ -46,7 +21,11 @@ window.SingleTask = React.createClass({
     }
     var assigned_user = "";
     if (this.props.task.assigned_user_id) {
+      if (this.props.task.assigned_user_id === window.CURRENT_USER) {
+      assigned_user = "assigned to Me"
+      } else {
       assigned_user = "assigned to " + UserStore.findbyid(this.props.task.assigned_user_id)
+    }
     }
     return (
       <div className="single-task-item">
