@@ -1,7 +1,33 @@
 window.NavBar = React.createClass({
 
   getInitialState: function () {
-    return (null)
+    return ({
+      my_tasks_notifications: ""
+    })
+  },
+
+  componentDidMount: function () {
+    TaskStore.addChangeListener(this.updateTaskNotification);
+    ApiUtil.fetchMyTasks();
+  },
+
+  updateTaskNotification: function () {
+    var incomplete_overdue_tasks = 0;
+
+    TaskStore.all().forEach(function (task) {
+      if (task.duedate && (new Date(task.duedate) < new Date()) && (task.completed == false)) {
+        incomplete_overdue_tasks += 1
+      }
+    })
+    if (incomplete_overdue_tasks > 0) {
+      this.setState({
+        my_tasks_notifications: incomplete_overdue_tasks
+      })
+    } else {
+      this.setState({
+        my_tasks_notifications: ""
+      })
+    }
   },
 
   logoutUser: function (e) {
@@ -37,7 +63,7 @@ window.NavBar = React.createClass({
             <ul className="nav navbar-nav nav-center nav-bling-container">
               <li className="nav-bling"><a href="#">Projects</a></li>
               <li className="nav-bling"><a href="#">Calendar</a></li>
-              <li className="nav-bling"><a onClick={this.goToMyTasksPage}>Me <span className="badge">3</span></a></li>
+              <li className="nav-bling"><a onClick={this.goToMyTasksPage}>Me <span className="label label-danger label-as-badge">{this.state.my_tasks_notifications}</span></a></li>
             </ul>
 
             <ul className="nav nav-stacked navbar-right">

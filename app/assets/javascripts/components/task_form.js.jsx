@@ -68,7 +68,8 @@ window.TaskForm = React.createClass({
             <div className="form-group">
               <label htmlFor="assigneduser">Assign this task:</label>
               <select onChange={this.updateTaskAssignedUser} className="form-control" id="assigneduser">
-                <option>{this.props.projectauthorusername}</option>
+                <option></option>
+                <option value={this.props.projectauthorusername}>Me</option>
                 {
                   this.state.project.shared_users.map (function (user) {
                     return (

@@ -21,7 +21,7 @@ window.ProjectShow = React.createClass({
 
   componentDidMount: function () {
     ProjectStore.addChangeListener(this._updateProjectInfo);
-    ProjectStore.addChangeListener(this._updateAuthorInfo);
+    UserStore.addChangeListener(this._updateAuthorInfo);
     ApiUtil.fetchSingleProject(parseInt(this.props.params.projectId));
     ApiUtil.fetchUsers();
   },
