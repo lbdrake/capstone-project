@@ -1,6 +1,5 @@
 window.ProjectEditForm = React.createClass({
   getInitialState: function () {
-    ApiUtil.fetchSingleProject(parseInt(this.props.params.projectId));
     var projectId = this.props.params.projectId;
     var project = this._findProjectById(parseInt(this.props.params.projectId)) || {};
     return ({
@@ -10,7 +9,7 @@ window.ProjectEditForm = React.createClass({
       description: project.description,
       author_username: UserStore.findbyid(project.author_id),
       new_shared_user: "",
-      original_shared_users: project.shared_users,
+      original_shared_users: project.shared_users || [],
       shared_users: [],
       noUsersFound: "defaultMessageUsersFound"
     });
@@ -54,8 +53,8 @@ window.ProjectEditForm = React.createClass({
       description: project.description,
       author_username: UserStore.findbyid(project.author_id),
       original_shared_users: project.shared_users,
-      shared_users: this.state.original_shared_users.slice()
     });
+    this.setState({shared_users: this.state.original_shared_users.slice()})
   },
 
   handleFormSubmit: function (e) {

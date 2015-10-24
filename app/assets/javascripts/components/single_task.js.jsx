@@ -1,22 +1,28 @@
 window.SingleTask = React.createClass({
-  getInitialState: function () {
-      return ({
-        completed: this.props.task.completed || false
-       })
-  },
-
-  componentDidMount: function () {
-    UserStore.addChangeListener(this.updateAssignedUsers);
-    ApiUtil.fetchUsers();
-  },
-
-  componentWillUnmount: function () {
-    UserStore.removeChangeListener(this.updateAssignedUsers);
-  },
-
-  updateAssignedUsers: function () {
-    this.setState({})
-  },
+  // getInitialState: function () {
+  //     return ({
+  //      })
+  // },
+  //
+  // componentDidMount: function () {
+  //   UserStore.addChangeListener(this.updateAssignedUsers);
+  //   TaskStore.addChangeListener(this.updateTaskCompletedStatus);
+  //   ApiUtil.fetchUsers();
+  //   ApiUtil.fetchMyTasks();
+  // },
+  //
+  // componentWillUnmount: function () {
+  //   UserStore.removeChangeListener(this.updateAssignedUsers);
+  //   TaskStore.removeChangeListener(this.updateTaskCompletedStatus);
+  // },
+  //
+  // updateAssignedUsers: function () {
+  //   this.setState({})
+  // },
+  //
+  // updateTaskCompletedStatus: function () {
+  //   this.setState({})
+  // },
 
   handleDeleteTaskClick: function (task) {
     setTimeout(function () {if (window.confirm("Are you sure you want to delete this task?")) {
@@ -25,8 +31,12 @@ window.SingleTask = React.createClass({
   },
 
   handleTaskCheckboxClick: function (e) {
-    ApiUtil.updateTaskCompletedStatus(this.props.task, !this.state.completed, this.props.project.id);
-    this.setState({completed: this.props.task.completed})
+    var projectId;
+    if (this.props.project) {
+      projectId = this.props.project.id
+    }
+    ApiUtil.updateTaskCompletedStatus(this.props.task, !this.props.task.completed, projectId);
+    this.setState({});
   },
 
   render: function () {
@@ -44,7 +54,7 @@ window.SingleTask = React.createClass({
           <input type="checkbox"
                  value="1"
                  className="taskcheckbox"
-                 defaultChecked={this.state.completed}
+                 defaultChecked={this.props.task.completed}
                  onChange={this.handleTaskCheckboxClick}>
               <span>{this.props.task.title}</span>
               <span onClick={this.handleDeleteTaskClick}

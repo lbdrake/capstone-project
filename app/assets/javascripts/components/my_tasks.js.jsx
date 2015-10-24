@@ -8,6 +8,7 @@ window.MyTasks = React.createClass({
   componentDidMount: function () {
     TaskStore.addChangeListener(this.updateTaskList);
     ApiUtil.fetchMyTasks();
+    console.log("Mounted MyTasks")
   },
 
   componentWillUnmount: function () {

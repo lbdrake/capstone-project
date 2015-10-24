@@ -187,7 +187,13 @@ ApiUtil = {
       type: "patch",
       data: {task: {completed: completionStatus}},
       success: function (response) {
-        ApiUtil.fetchSingleProject(projectId);
+        if (projectId) {
+          console.log("fetching project");
+          ApiUtil.fetchSingleProject(projectId);
+        } else {
+          console.log("fetching MyTasks");
+            ApiUtil.fetchMyTasks();
+        }
       },
       error: function (response) {
         console.log(response);
