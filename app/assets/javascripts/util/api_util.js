@@ -188,11 +188,9 @@ ApiUtil = {
       data: {task: {completed: completionStatus}},
       success: function (response) {
         if (projectId) {
-          console.log("fetching project");
           ApiUtil.fetchSingleProject(projectId);
         } else {
-          console.log("fetching MyTasks");
-            ApiUtil.fetchMyTasks();
+          ApiUtil.fetchMyTasks();
         }
       },
       error: function (response) {
