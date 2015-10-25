@@ -56,7 +56,7 @@ window.TaskForm = React.createClass({
 
   render: function () {
     return (
-      <div>
+      <div key={this.props.todolist.id}>
       <p onClick={this.handleNewTaskClick} className={this.state.showTaskForm}>Add Task</p>
       <div className={this.state.showTaskForm}>
         <form onSubmit={this.handleFormSubmit}>
