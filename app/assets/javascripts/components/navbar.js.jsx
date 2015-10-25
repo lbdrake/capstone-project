@@ -8,11 +8,13 @@ window.NavBar = React.createClass({
 
   componentDidMount: function () {
     TaskStore.addChangeListener(this.updateTaskNotification);
+    ProjectStore.addChangeListener(this.updateTaskNotification);
     ApiUtil.fetchMyTasks();
   },
 
   componentWillUnmount: function () {
-    TaskStore.removeChangeListener(this.updateTaskNotification)
+    TaskStore.removeChangeListener(this.updateTaskNotification);
+    ProjectStore.removeChangeListener(this.updateTaskNotification);
   },
 
   updateTaskNotification: function () {

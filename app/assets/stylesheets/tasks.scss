@@ -47,3 +47,7 @@ input.taskcheckbox:checked ~ ul {
 .task-description {
   font-style: italic;
 }
+
+.overdue-task-true {
+  color: red;
+}
