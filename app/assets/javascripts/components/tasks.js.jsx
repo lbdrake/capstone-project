@@ -6,6 +6,14 @@ window.Tasks = React.createClass({
   },
 
   render: function () {
+    var ordered_tasks = this.props.tasks
+    ordered_tasks.sort(function(a,b) {
+      var adate = a.duedate || "2200-12-12"
+      var bdate = b.duedate || "2200-12-12"
+      return new Date(adate) - new Date(bdate)
+    })
+    ordered_tasks.sort(function(a,b) {return a.completed - b.completed})
+
     return (
       <div>
       <ul className="ulForToDoLists">
@@ -18,7 +26,7 @@ window.Tasks = React.createClass({
         <li>
           <ul>
             {
-              this.props.tasks.map(function(task){
+              ordered_tasks.map(function(task){
                 return (
                   <SingleTask task={task} todolist={this.props.todolist} project={this.props.project}/>
                 );

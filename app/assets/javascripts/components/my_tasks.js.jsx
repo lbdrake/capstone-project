@@ -20,7 +20,6 @@ window.MyTasks = React.createClass({
 
   render: function () {
     if (this.state.my_tasks.length === 0) {
-      debugger;
       var congratsnotasks = "congrats-no-tasks-true"
     } else {
       var congratsnotasks = "congrats-no-tasks-false"
