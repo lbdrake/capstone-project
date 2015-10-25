@@ -189,7 +189,7 @@ ApiUtil = {
       success: function (response) {
         if (projectId) {
           ApiUtil.fetchSingleProject(projectId);
-          
+          ApiUtil.fetchMyTasks();
         } else {
           ApiUtil.fetchMyTasks();
         }
