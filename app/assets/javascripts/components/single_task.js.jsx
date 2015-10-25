@@ -2,24 +2,24 @@ window.SingleTask = React.createClass({
   getInitialState: function () {
     return ({
       showtaskform: "showtaskform-true"
-    })
+    });
   },
 
   handleDeleteTaskClick: function (task) {
     setTimeout(function () {if (window.confirm("Are you sure you want to delete this task?")) {
       ApiUtil.deleteTask(this.props.task, this.props.project.id);
-    }}.bind(this), 200)
+    }}.bind(this), 200);
   },
 
   handleEditTaskClick: function (e) {
-    console.log("clicked edit task icon")
-    this.setState({showtaskform: "showtaskform-false"})
+    console.log("clicked edit task icon");
+    this.setState({showtaskform: "showtaskform-false"});
   },
 
   handleTaskCheckboxClick: function (e) {
     var projectId;
     if (this.props.project) {
-      projectId = this.props.project.id
+      projectId = this.props.project.id;
     }
     ApiUtil.updateTaskCompletedStatus(this.props.task, !this.props.task.completed, projectId);
     this.setState({});
@@ -28,7 +28,7 @@ window.SingleTask = React.createClass({
   render: function () {
     var date = "";
     if (this.props.task.duedate) {
-      date = "due " + new Date(this.props.task.duedate).toDateString()
+      date = "due " + new Date(this.props.task.duedate).toDateString();
     }
 
     var assigned_username = "";
@@ -68,8 +68,8 @@ window.SingleTask = React.createClass({
             </input>
           </li>
 
-          <TaskForm showtaskform="showtaskform-false" task={this.props.task} assigned_user={assigned_username} projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>
       </div>
-    )
+    );
   }
 });
+          // <TaskForm showtaskform="showtaskform-false" task={this.props.task} assigned_user={assigned_username} projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>

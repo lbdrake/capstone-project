@@ -28,7 +28,7 @@ window.ProjectShow = React.createClass({
 
   componentWillUnmount: function () {
     ProjectStore.removeChangeListener(this._updateProjectInfo);
-    ProjectStore.removeChangeListener(this._updateAuthorInfo);
+    UserStore.removeChangeListener(this._updateAuthorInfo);
   },
 
   _updateProjectInfo: function () {

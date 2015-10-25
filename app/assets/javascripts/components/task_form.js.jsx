@@ -14,7 +14,7 @@ window.TaskForm = React.createClass({
   componentWillReceiveProps: function (newprops) {
     this.setState({
       taskAssignedUser: this.props.assigned_user
-    })
+    });
   },
 
   handleNewTaskClick: function (e) {
@@ -22,7 +22,7 @@ window.TaskForm = React.createClass({
   },
 
   handleCancelClick: function (e) {
-    this.setState({showTaskForm: "showtaskform-false"})
+    this.setState({showTaskForm: "showtaskform-false"});
   },
 
   updateTaskTitle: function (e) {
@@ -42,8 +42,8 @@ window.TaskForm = React.createClass({
   },
 
   handleFormSubmit: function (e) {
-    e.preventDefault;
-    var assigned_user_id = UserStore.find(this.state.taskAssignedUser).id
+    e.preventDefault();
+    var assigned_user_id = UserStore.find(this.state.taskAssignedUser).id;
     ApiUtil.createTask({
       title: this.state.taskTitle,
       description: this.state.taskDescription,
