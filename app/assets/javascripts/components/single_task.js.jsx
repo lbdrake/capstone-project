@@ -19,14 +19,23 @@ window.SingleTask = React.createClass({
     if (this.props.task.duedate) {
       date = "due " + new Date(this.props.task.duedate).toDateString()
     }
+
     var assigned_user = "";
     if (this.props.task.assigned_user_id) {
       if (this.props.task.assigned_user_id === window.CURRENT_USER) {
-      assigned_user = "assigned to Me"
+        assigned_user = "assigned to Me"
       } else {
-      assigned_user = "assigned to " + UserStore.findbyid(this.props.task.assigned_user_id)
+        assigned_user = "assigned to " + UserStore.findbyid(this.props.task.assigned_user_id)
+      }
     }
+
+    var overduetask = "";
+    if (this.props.task.duedate && (new Date(this.props.task.duedate) < new Date())) {
+      overduetask = "overdue-task-true"
     }
+
+
+
     return (
       <div className="single-task-item" key={this.props.task.id}>
         <li className="task-title" key={this.props.task.id}>
@@ -35,7 +44,7 @@ window.SingleTask = React.createClass({
                  className="taskcheckbox"
                  defaultChecked={this.props.task.completed}
                  onChange={this.handleTaskCheckboxClick}>
-              <span>{this.props.task.title}</span>
+              <span className={overduetask}>{this.props.task.title}</span>
               <span onClick={this.handleDeleteTaskClick}
                     className="glyphicon glyphicon-trash delete-icon"></span>
               <ul>

@@ -61,6 +61,6 @@ class Project < ActiveRecord::Base
        ((projects.author_id = :user_id) OR (project_shares.shared_user_id = :user_id))
      SQL
 
-     Project.joins(joins_cond).where(where_cond, user_id: user_id).uniq
+     Project.joins(joins_cond).where(where_cond, user_id: user_id).order(created_at: :desc).uniq
   end
 end
