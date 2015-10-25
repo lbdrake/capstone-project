@@ -64,30 +64,39 @@ window.TaskForm = React.createClass({
     return (
       <div key={this.props.todolist.id}>
       <p onClick={this.handleNewTaskClick} className={this.state.showTaskForm}>Add Task</p>
-      <div className={this.state.showTaskForm}>
-        <form onSubmit={this.handleFormSubmit}>
-          <input type="text" placeholder="Add a Task title" className="form-control" onChange={this.updateTaskTitle} value={this.state.taskTitle} />
-          <br/>
-          <input type="text" placeholder="Description (optional)" className="form-control" onChange={this.updateTaskDescription} value={this.state.taskDescription} />
-          <br/>
-          <input  type="date" onChange={this.updateTaskDueDate} value={this.state.taskDueDate} />
-            <div className="form-group">
-              <label htmlFor="assigneduser">Assign this task:</label>
-              <select onChange={this.updateTaskAssignedUser} className="form-control" id="assigneduser" value={this.state.taskAssignedUser}>
-                <option></option>
-                <option value={this.props.projectauthorusername} >Me</option>
-                {
-                  this.state.project.shared_users.map (function (user) {
-                    return (
-                      <option value={user.username}>{user.username}</option>
-                    )
-                  })
-                }
-              </select>
-            </div>
-            <input type="submit" value="Save Task" /><p className="form-cancel-element" onClick={this.handleCancelClick}>or Cancel</p>
-        </form>
-      </div>
+        <div className={this.state.showTaskForm}>
+          <form onSubmit={this.handleFormSubmit}>
+            <input type="text"
+                   placeholder="Add a Task title"
+                   className="form-control"
+                   onChange={this.updateTaskTitle}
+                   value={this.state.taskTitle} />
+            <input type="text"
+                   placeholder="Description (optional)"
+                   className="form-control"
+                   onChange={this.updateTaskDescription}
+                   value={this.state.taskDescription} />
+            <input  type="date" onChange={this.updateTaskDueDate} value={this.state.taskDueDate} />
+              <div className="form-group">
+                <label htmlFor="assigneduser">Assign this task:</label>
+                <select onChange={this.updateTaskAssignedUser}
+                        className="form-control"
+                        id="assigneduser"
+                        value={this.state.taskAssignedUser}>
+                  <option></option>
+                  <option value={this.props.projectauthorusername} >Me</option>
+                  {
+                    this.state.project.shared_users.map (function (user) {
+                      return (
+                        <option value={user.username}>{user.username}</option>
+                      )
+                    })
+                  }
+                </select>
+              </div>
+              <input type="submit" value="Save Task" /><p className="form-cancel-element" onClick={this.handleCancelClick}>or Cancel</p>
+          </form>
+        </div>
       </div>
     )
   }
