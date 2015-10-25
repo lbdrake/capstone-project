@@ -11,6 +11,10 @@ window.NavBar = React.createClass({
     ApiUtil.fetchMyTasks();
   },
 
+  componentWillUnmount: function () {
+    TaskStore.removeChangeListener(this.updateTaskNotification)
+  },
+
   updateTaskNotification: function () {
     var incomplete_overdue_tasks = 0;
 
@@ -55,7 +59,7 @@ window.NavBar = React.createClass({
               <span className="icon-bar"></span>
             </button>
             <a className="navbar navbar-brand" href="#" >
-              <img src="TaskMaster-logo.png" alt="TaskMaster Logo" />
+              <img src="/assets/TaskMaster-logo.png" alt="TaskMaster Logo" />
             </a>
           </div>
 

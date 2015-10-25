@@ -28,7 +28,7 @@ window.SingleTask = React.createClass({
     }
     }
     return (
-      <div className="single-task-item">
+      <div className="single-task-item" key={this.props.task.id}>
         <li className="task-title" key={this.props.task.id}>
           <input type="checkbox"
                  value="1"
@@ -40,7 +40,7 @@ window.SingleTask = React.createClass({
                     className="glyphicon glyphicon-trash delete-icon"></span>
               <ul>
                 <li className="task-description">{this.props.task.description}</li>
-                <li className="assigned-user-and-due-date">{assigned_user} {date}</li>
+                <li className="assigned-user-and-due-date"><span className="label label-default">{assigned_user}</span> <span className="label label-default">{date}</span></li>
               </ul>
             </input>
           </li>

@@ -1,7 +1,7 @@
 window.MyTasks = React.createClass({
   getInitialState: function () {
     return ({
-      my_tasks: TaskStore.all()
+      my_tasks: TaskStore.all(),
     })
   },
 
@@ -19,6 +19,12 @@ window.MyTasks = React.createClass({
   },
 
   render: function () {
+    if (this.state.my_tasks.length === 0) {
+      debugger;
+      var congratsnotasks = "congrats-no-tasks-true"
+    } else {
+      var congratsnotasks = "congrats-no-tasks-false"
+    }
     return (
       <div className="general-show-panel">
         <div className="panel panel-default">
@@ -26,6 +32,7 @@ window.MyTasks = React.createClass({
             <h1>My Tasks</h1>
           </div>
           <div className="panel-body">
+            <h3 className={congratsnotasks}>Congrats, you finished all your tasks!</h3>
             {
               this.state.my_tasks.map(function (task) {
                 return (
