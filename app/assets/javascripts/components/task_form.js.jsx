@@ -3,12 +3,18 @@ window.TaskForm = React.createClass({
     return ({
       project: this.props.project,
       shared_users: [this.props.projectauthorusername].concat(this.props.project.shared_users),
-      taskTitle: "",
-      taskDescription: "",
-      taskDueDate: "",
-      taskAssignedUser: "",
-      showTaskForm: "showtaskform-false"
+      taskTitle: this.props.task.title,
+      taskDescription: this.props.task.description,
+      taskDueDate: this.props.task.duedate,
+      taskAssignedUser: this.props.assigned_user,
+      showTaskForm: this.props.showtaskform
       });
+  },
+
+  componentWillReceiveProps: function (newprops) {
+    this.setState({
+      taskAssignedUser: this.props.assigned_user
+    })
   },
 
   handleNewTaskClick: function (e) {
@@ -62,18 +68,18 @@ window.TaskForm = React.createClass({
         <form onSubmit={this.handleFormSubmit}>
           <input type="text" placeholder="Add a Task title" className="form-control" onChange={this.updateTaskTitle} value={this.state.taskTitle} />
           <br/>
-          <input type="text" placeholder="Description (optional)" className="form-control" onChange={this.updateTaskDescription} value={this.state.TaskDescription} />
+          <input type="text" placeholder="Description (optional)" className="form-control" onChange={this.updateTaskDescription} value={this.state.taskDescription} />
           <br/>
           <input  type="date" onChange={this.updateTaskDueDate} value={this.state.taskDueDate} />
             <div className="form-group">
               <label htmlFor="assigneduser">Assign this task:</label>
-              <select onChange={this.updateTaskAssignedUser} className="form-control" id="assigneduser">
+              <select onChange={this.updateTaskAssignedUser} className="form-control" id="assigneduser" value={this.state.taskAssignedUser}>
                 <option></option>
-                <option value={this.props.projectauthorusername}>Me</option>
+                <option value={this.props.projectauthorusername} >Me</option>
                 {
                   this.state.project.shared_users.map (function (user) {
                     return (
-                      <option>{user.username}</option>
+                      <option value={user.username}>{user.username}</option>
                     )
                   })
                 }

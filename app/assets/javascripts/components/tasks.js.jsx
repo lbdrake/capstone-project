@@ -14,6 +14,13 @@ window.Tasks = React.createClass({
     })
     ordered_tasks.sort(function(a,b) {return a.completed - b.completed})
 
+    var dummy_task = {
+      title: "",
+      description: "",
+      duedate: "",
+      assigned_user_id: "",
+    }
+
     return (
       <div>
       <ul className="ulForToDoLists">
@@ -28,11 +35,11 @@ window.Tasks = React.createClass({
             {
               ordered_tasks.map(function(task){
                 return (
-                  <SingleTask task={task} todolist={this.props.todolist} project={this.props.project}/>
+                  <SingleTask projectauthorusername={this.props.projectauthorusername} task={task} todolist={this.props.todolist} project={this.props.project}/>
                 );
               }.bind(this))
             }
-          <TaskForm projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>
+          <TaskForm showtaskform={"showtaskform-false"} task={dummy_task} assigned_user={""} projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>
           </ul>
         </li>
       </ul>
