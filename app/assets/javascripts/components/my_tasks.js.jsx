@@ -20,10 +20,11 @@ window.MyTasks = React.createClass({
 
   render: function () {
     if (this.state.my_tasks.length === 0) {
-      var congratsnotasks = "congrats-no-tasks-true"
+      var congratsnotasks = "congrats-no-tasks-true";
     } else {
-      var congratsnotasks = "congrats-no-tasks-false"
+      var congratsnotasks = "congrats-no-tasks-false";
     }
+
     return (
       <div className="general-show-panel">
         <div className="panel panel-default">
@@ -38,7 +39,7 @@ window.MyTasks = React.createClass({
                   <div>
                     <SingleTask task={task} />
                   </div>
-                )
+                );
               })
             }
           </div>
@@ -46,6 +47,6 @@ window.MyTasks = React.createClass({
           </div>
         </div>
       </div>
-    )
+    );
   }
 });
