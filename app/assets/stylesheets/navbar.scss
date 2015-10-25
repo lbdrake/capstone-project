@@ -1,5 +1,6 @@
 .navbar-default {
   background-color: transparent;
+  border: transparent;
 }
 // .navbar-brand {
 //   padding-left: 0px;
@@ -10,13 +11,13 @@
 //   top: 30px;
 // }
 
+.navbar-brand {
+  padding: 10px 10px;
+}
+
 .nav-bling-container {
   // position: relative;
   // top: 43px;
-}
-
-.navbar-links {
-  float: right;
 }
 
 .nav-bling:hover {
