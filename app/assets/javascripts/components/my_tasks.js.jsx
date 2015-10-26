@@ -37,7 +37,7 @@ window.MyTasks = React.createClass({
               this.state.my_tasks.map(function (task) {
                 return (
                   <div>
-                    <SingleTask task={task} />
+                    <SingleTask task={task} shared_users={task.shared_users} />
                   </div>
                 );
               })
