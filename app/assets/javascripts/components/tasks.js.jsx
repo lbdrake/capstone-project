@@ -20,6 +20,7 @@ window.Tasks = React.createClass({
       description: "",
       duedate: "",
       assigned_user_id: "",
+      id: "1"
     };
 
     return (

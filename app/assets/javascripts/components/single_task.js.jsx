@@ -54,8 +54,6 @@ window.SingleTask = React.createClass({
                  defaultChecked={this.props.task.completed}
                  onChange={this.handleTaskCheckboxClick}>
               <span className={overduetask}>{this.props.task.title}</span>
-              <span onClick={this.handleEditTaskClick}
-                    className="glyphicon glyphicon-pencil edit-icon"></span>
               <span onClick={this.handleDeleteTaskClick}
                     className="glyphicon glyphicon-trash delete-icon"></span>
               <ul>
@@ -68,4 +66,7 @@ window.SingleTask = React.createClass({
     );
   }
 });
-// <EditTaskForm showtaskform={this.state.showtaskform} task={this.props.task} assigned_user={assigned_username} projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>
+
+        // <span onClick={this.handleEditTaskClick}
+        //       className="glyphicon glyphicon-pencil edit-icon"></span>
+        // <TaskForm showtaskform={this.state.showtaskform} task={this.props.task} shared_users={this.props.shared_users} assigned_user={assigned_username} projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>
