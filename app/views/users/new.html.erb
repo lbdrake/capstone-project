@@ -18,6 +18,12 @@
     <div class="col-sm-6">
       <h1>Ready to get more organized?</h1>
       <p>TaskMaster is a project management app for teams. Create accounts for your team to share projects and assign tasks.</p>
+      <form class="demosigninform" action="/session" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="users[username]" value="SallyRide">
+        <input type="hidden" name="users[password]" value="spacetime">
+        <button onclick="window.location.href='/session/new'" type="submit" class="demosigninform btn btn-green btn-lg btn-block active">GUEST LOGIN AS ASTRONAUT SALLY</button>
+      </form>
     </div>
     <div class="col-sm-6">
       <div class="well">
@@ -46,10 +52,5 @@
       </div>
     </div>
   </div>
-  <form class="demosigninform" action="/session" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="hidden" name="users[username]" value="SallyRide">
-    <input type="hidden" name="users[password]" value="spacetime">
-    <button onclick="window.location.href='/session/new'" type="submit" class="demosigninform btn btn-default">DEMO LOGIN</button>
-  </form>
+
 </div>

@@ -36,7 +36,7 @@ window.Tasks = React.createClass({
               {
                 ordered_tasks.map(function(task){
                   return (
-                    <SingleTask projectauthorusername={this.props.projectauthorusername} task={task} todolist={this.props.todolist} project={this.props.project}/>
+                    <SingleTask projectauthorusername={this.props.projectauthorusername} task={task} todolist={this.props.todolist} project={this.props.project} />
                   );
                 }.bind(this))
               }

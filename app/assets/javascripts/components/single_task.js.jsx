@@ -1,8 +1,6 @@
 window.SingleTask = React.createClass({
   getInitialState: function () {
-    return ({
-      showtaskform: "showtaskform-true"
-    });
+    return ({null});
   },
 
   handleDeleteTaskClick: function (task) {
@@ -13,7 +11,6 @@ window.SingleTask = React.createClass({
 
   handleEditTaskClick: function (e) {
     console.log("clicked edit task icon");
-    this.setState({showtaskform: "showtaskform-false"});
   },
 
   handleTaskCheckboxClick: function (e) {
@@ -67,9 +64,8 @@ window.SingleTask = React.createClass({
               </ul>
             </input>
           </li>
-
       </div>
     );
   }
 });
-          // <TaskForm showtaskform="showtaskform-false" task={this.props.task} assigned_user={assigned_username} projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>
+// <EditTaskForm showtaskform={this.state.showtaskform} task={this.props.task} assigned_user={assigned_username} projectauthorusername={this.props.projectauthorusername} project={this.props.project} todolist={this.props.todolist}/>

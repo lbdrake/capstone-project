@@ -1,4 +1,4 @@
-window.TaskForm = React.createClass({
+window.EditTaskForm = React.createClass({
   getInitialState: function () {
     return ({
       project: this.props.project,
