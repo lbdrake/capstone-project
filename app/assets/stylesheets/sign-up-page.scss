@@ -1,3 +1,11 @@
  .well {
   //  border: 1px solid grey;
  }
+
+.btn-green {
+  background-color: #9dc82a;
+}
+.btn-green:hover {
+  background-color: #8cb326;
+  transition: 0.3s;
+}

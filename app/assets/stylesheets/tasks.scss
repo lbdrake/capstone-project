@@ -1,3 +1,17 @@
+.edit-icon {
+  display: none;
+}
+
+.task-title:hover .edit-icon {
+  display: inline;
+  padding: 10px;
+}
+
+.edit-icon:hover {
+  cursor: pointer;
+  color: lightgreen;
+}
+
 .delete-icon {
   display: none;
 }
@@ -18,7 +32,7 @@
 
 .task-title:hover .delete-icon {
   display: inline;
-  padding: 10px;
+  padding: 5px;
 }
 
 input.taskcheckbox {
