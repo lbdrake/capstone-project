@@ -2,7 +2,6 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <img class="navbar-brand" src="/assets/TaskMaster-logo.png" alt="TaskMaster Logo" />
-      <p class="navbar-text">Organize Your Team, Optimize Your Projects</p>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/session/new">Already have an account?</a></li>
@@ -17,7 +16,7 @@
   <div class="row">
     <div class="col-sm-6">
       <h1>Ready to get more organized?</h1>
-      <p>TaskMaster is a project management app for teams. Create accounts for your team to share projects and assign tasks.</p>
+      <p>TaskMaster is a project management app for teams. Create accounts for your team to share projects and assign tasks. Start your own account today, or login to Astronaut Sally's account below to see how it works.</p>
       <form class="demosigninform" action="/session" method="post">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="users[username]" value="AstronautSally">
@@ -28,7 +27,7 @@
     <div class="col-sm-6">
       <div class="well">
         <div class="sign-up-box">
-          <h1>SIGN UP!</h1>
+          <h2>SIGN UP!</h2>
             <ul>
               <% if flash.now[:errors] %>
                 <% flash.now[:errors].each do |error| %>
