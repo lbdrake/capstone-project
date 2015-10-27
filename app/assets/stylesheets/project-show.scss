@@ -16,3 +16,17 @@
 .delete-this-project-link:active {
   transform: translate(0px, 3px);
 }
+
+.panel-default > .panel-heading {
+  color: white;
+  background-color: lightslategrey;
+}
+
+.invite-users-button {
+  display: none;
+}
+
+.panel-heading:hover  button.invite-users-button {
+  display: inline;
+  color: darkslategrey;
+}

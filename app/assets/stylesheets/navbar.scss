@@ -1,6 +1,7 @@
 .navbar-default {
   background-color: transparent;
   border: transparent;
+  margin-top: 10px;
 }
 // .navbar-brand {
 //   padding-left: 0px;
@@ -20,10 +21,18 @@
   // top: 43px;
 }
 
-.nav-bling:hover {
-  background-color: #9dc82a;
-  transition: 0.3s;
+li.nav-bling:hover {
+  background-color: darkslategrey;
+  transition: 0.2s;
   border-radius: 5px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: white;
+}
+.navbar-default .navbar-nav > li > a.nav-logout:hover {
+  color: darkslategrey;
+  text-decoration: underline;
 }
 
 .nav-logout:active {
