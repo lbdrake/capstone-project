@@ -28,7 +28,7 @@ window.ToDoLists = React.createClass({
     var todolists = this.props.todolists;
     return (
       <div>
-        <h1 className="toDoListHeader">To Do Lists<button onClick={this.handleAddNewToDoListClick} className="btn btn-default btn-xs addToDoListButton ">Add a To Do List</button></h1>
+        <h1 className="toDoListHeader">To Do Lists:<button onClick={this.handleAddNewToDoListClick} className="btn btn-default btn-xs addToDoListButton ">Add a To Do List</button></h1>
           <div className={this.state.form_open}>
             <form onSubmit={this.handleFormSubmit}>
               <label htmlFor="title" className="sr-only">Add a To Do List Title:</label>

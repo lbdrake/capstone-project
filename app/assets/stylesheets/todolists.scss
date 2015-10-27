@@ -2,22 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .addToDoListButton {
-  margin-left: 10px;
+  margin-left: 30px;
   vertical-align: bottom;
 }
 
 .toDoListHeader {
-  font-size: 1.25em;
+  font-size: 1.75em;
   font-style: bold;
   display: inline;
-  max-resolution: res;
-}
-
-.toDoListHeader + ul {
-  padding-top: 20px;
 }
 
 .ulForToDoLists {
+  margin-top: 40px;
 }
 
 .form_open {

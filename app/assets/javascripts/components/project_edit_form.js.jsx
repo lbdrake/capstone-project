@@ -180,7 +180,7 @@ window.ProjectEditForm = React.createClass({
           <input type="button" onClick={this.handleAddUserClick} value="Add" />
           <p className={this.state.noUsersFound} >Sorry, we couldn't find a user with that username, please try again</p>
         </div>
-        <input type="submit" value="Save Project"/><span onClick={this.handleCancelClick}> or <u>Cancel</u></span>
+        <input type="submit" value="Save Project"/><span onClick={this.handleCancelClick} className="delete-this-project-link"> or Cancel</span>
 
       </form>
     </div>
