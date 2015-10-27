@@ -61,8 +61,8 @@ window.ProjectShow = React.createClass({
       <div className="general-show-panel">
         <div className="panel panel-default">
           <div className="panel-heading">
-            <h1>{this.state.project.title} <button onClick={this.handleEditProjectClick} className="btn btn-default btn-xs">edit</button></h1>
-            <h2>{this.state.project.description}</h2>
+            <h2>{this.state.project.title} <button onClick={this.handleEditProjectClick} className="btn btn-default btn-xs invite-users-button">Invite more users</button></h2>
+            <h3>{this.state.project.description}</h3>
           </div>
           <div className="panel-body">
             <ToDoLists authorusername={this.state.authorusername} project={this.state.project} todolists={this.state.project.todolists || []} />
