@@ -101,6 +101,7 @@ window.ProjectForm = React.createClass({
          <div className="form-group">
             <ul onClick={this.handleRemoveUserClick} >
               <li className="invite-users-header">These team members are already shared:</li>
+              <li className="already-shared">Me (owner)</li>
             {
               this.state.shared_users.map(function (shared_user) {
                 return(
