@@ -54,7 +54,6 @@
   position: relative;
   top: 62px;
   transform: translateX(30px);
-
   background-color: seagreen;
   transition: 0.2s;
   border-radius: 5px;
@@ -64,6 +63,8 @@
 }
 
 .sm-add-new-project-button:hover {
+  background-color: #126537;
+
   transition: 0.3s;
   box-shadow: 0 0 6px lightgrey;
 }
