@@ -96,8 +96,7 @@ projectshares = ProjectShare.create([
   {project_id: 2, shared_user_id: 1},
   {project_id: 2, shared_user_id: 4},
   {project_id: 2, shared_user_id: 5},
-  {project_id: 4, shared_user_id: 1},
-  {project_id: 3, shared_user_id: 1}
+  {project_id: 4, shared_user_id: 1}
   ])
 
 ActiveRecord::Base.connection.tables.each { |t| ActiveRecord::Base.connection.reset_pk_sequence!(t) }
