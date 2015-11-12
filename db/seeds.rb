@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.delete(1..5)
 
 users = User.create([
   {username: "AstronautSally", password: "spacetime", id: 1},
@@ -14,6 +15,8 @@ users = User.create([
   {username: "Darby", password: "spacescience", id: 4},
   {username: "Eleonora", password: "sallysassistant", id: 5}])
 
+Project.delete(1..4)
+
 projects = Project.create([
   {title: "Book Signing Events", author_id: 3, id: 2},
   {title: "Sally's Personal Tasks", author_id: 1, id: 3},
@@ -21,12 +24,16 @@ projects = Project.create([
   {title: "Trip to Space Station", description: "Team of astronauts pushing the final frontier", author_id: 1, id: 1}
   ])
 
+ToDoList.delete(1..13)
+
 spacetriptodolists = ToDoList.create([
   {title: "Assemble team of astronauts", project_id: 1, archived: false, id: 1},
   {title: "Train team of astronauts", project_id: 1, archived: false, id: 2},
   {title: "Launch Day!", project_id: 1, archived: false, id: 3},
   {title: "Plan Welcome Home Party", project_id: 1, archived: false, id: 4},
   ])
+
+Task.delete(1..30)
 
 spacetriptasks = Task.create([
   {title: "Call Jim at NASA for recommendations", author_id: 1, assigned_user_id: 1, todolist_id: 1, duedate: "2015-09-09", completed: false, id: 1},
@@ -87,16 +94,18 @@ festivaltasks = Task.create([
   {title: "Final walkthrough and check in with participants", author_id: 3, assigned_user_id: 5, todolist_id: 13, completed: false, id: 30}
   ])
 
+ProjectShare.delete(1..9)
+
 projectshares = ProjectShare.create([
-  {project_id: 1, shared_user_id: 2},
-  {project_id: 1, shared_user_id: 3},
-  {project_id: 1, shared_user_id: 4},
-  {project_id: 1, shared_user_id: 5},
-  {project_id: 2, shared_user_id: 2},
-  {project_id: 2, shared_user_id: 1},
-  {project_id: 2, shared_user_id: 4},
-  {project_id: 2, shared_user_id: 5},
-  {project_id: 4, shared_user_id: 1}
+  {project_id: 1, shared_user_id: 2, id: 1},
+  {project_id: 1, shared_user_id: 3, id: 2},
+  {project_id: 1, shared_user_id: 4, id: 3},
+  {project_id: 1, shared_user_id: 5, id: 4},
+  {project_id: 2, shared_user_id: 2, id: 5},
+  {project_id: 2, shared_user_id: 1, id: 6},
+  {project_id: 2, shared_user_id: 4, id: 7},
+  {project_id: 2, shared_user_id: 5, id: 8},
+  {project_id: 4, shared_user_id: 1, id: 9}
   ])
 
 ActiveRecord::Base.connection.tables.each { |t| ActiveRecord::Base.connection.reset_pk_sequence!(t) }
